@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace TimeshareExchangeAPI.Models;
+namespace TimeshareExchangeAPI.Repository.Models;
 
 public partial class TimeshareExchangeContext : DbContext
 {

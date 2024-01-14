@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TimeshareExchangeAPI.Models;
+namespace TimeshareExchangeAPI.Repository.Models;
 
 public partial class Exchange
 {

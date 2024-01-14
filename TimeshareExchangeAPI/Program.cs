@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using TimeshareExchangeAPI.Models;
+using TimeshareExchangeAPI.Repository.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
