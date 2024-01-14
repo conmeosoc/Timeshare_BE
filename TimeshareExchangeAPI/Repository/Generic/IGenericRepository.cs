@@ -8,6 +8,5 @@ namespace TimeshareExchangeAPI.Repository.Generic
         Task Update(TEntity entity);
         Task Delete(TEntity entity);
         Task<IEnumerable<TEntity>> Get(Expression<Func<TEntity, bool>>? expression = null, params string[] includeProperties);
-        async Task<TEntity?> GetFirst(Expression<Func<TEntity, bool>>? expression = null, params string[]
     }
 }
