@@ -2,7 +2,7 @@
 
 namespace TimeshareExchangeAPI.Repository.Generic
 {
-    public interface IGenericRepository
+    public interface IGenericRepository<TEntity> where TEntity : class
     {
         Task Add(TEntity entity);
         Task Update(TEntity entity);
