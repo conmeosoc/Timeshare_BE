@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "8Q7NBMhWIxPP/ltKZHTbqAg6pIXe9iAZlouEDdmEJHENxmWmsgwg3kZhN5CI9yD5uCc7gtlqL1EZVpJb2uhuMA==",
+  "success": true,
+  "projectFilePath": "D:\\SWP391\\TimeshareExchange\\TimeshareExchangeAPI\\TimeshareExchangeAPI\\TimeshareExchangeAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\minht\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\minht\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\minht\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\minht\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\minht\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\minht\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
