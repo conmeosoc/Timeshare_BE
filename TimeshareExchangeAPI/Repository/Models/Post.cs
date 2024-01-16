@@ -9,5 +9,9 @@ public partial class Post
 
     public decimal? Price { get; set; }
 
+    public string Id { get; set; } = null!;
+
+    public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
+
     public virtual Realestate? Realestate { get; set; }
 }

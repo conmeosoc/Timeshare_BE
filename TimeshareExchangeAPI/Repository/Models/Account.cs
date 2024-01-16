@@ -15,6 +15,12 @@ public partial class Account
 
     public int? Phone { get; set; }
 
+    public bool? Status { get; set; }
+
+    public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
+
+    public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
+
     public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
 
     public virtual ICollection<Timeshare> Timeshares { get; set; } = new List<Timeshare>();

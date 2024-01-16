@@ -17,6 +17,8 @@ public partial class Timeshare
 
     public string? Status { get; set; }
 
+    public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
+
     public virtual Account? Member { get; set; }
 
     public virtual Realestate? Realestate { get; set; }

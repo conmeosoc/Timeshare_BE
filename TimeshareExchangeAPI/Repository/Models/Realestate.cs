@@ -19,7 +19,7 @@ public partial class Realestate
 
     public string? Status { get; set; }
 
-    public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
+    public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
 
     public virtual ICollection<Timeshare> Timeshares { get; set; } = new List<Timeshare>();
 }

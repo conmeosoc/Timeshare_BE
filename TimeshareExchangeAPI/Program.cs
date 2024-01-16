@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<TimeshareExchangeContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("TimeshareExchange")));
+           options.UseSqlServer(builder.Configuration.GetConnectionString("TimeshareExchange")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

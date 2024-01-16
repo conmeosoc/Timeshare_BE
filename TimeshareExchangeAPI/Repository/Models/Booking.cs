@@ -7,7 +7,7 @@ public partial class Booking
 {
     public string Id { get; set; } = null!;
 
-    public string? RealestateId { get; set; }
+    public string? TimeshareId { get; set; }
 
     public DateTime? StartDay { get; set; }
 
@@ -17,5 +17,15 @@ public partial class Booking
 
     public decimal? Deposit { get; set; }
 
-    public virtual Realestate? Realestate { get; set; }
+    public int? Amount { get; set; }
+
+    public int? Adult { get; set; }
+
+    public int? Children { get; set; }
+
+    public int? Room { get; set; }
+
+    public virtual Account? Member { get; set; }
+
+    public virtual Timeshare? Timeshare { get; set; }
 }
