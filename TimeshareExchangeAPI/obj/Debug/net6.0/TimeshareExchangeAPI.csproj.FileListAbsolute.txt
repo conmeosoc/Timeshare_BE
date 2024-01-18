@@ -292,3 +292,4 @@ D:\SWP391\TimeshareExchange\TimeshareExchangeAPI\TimeshareExchangeAPI\obj\Debug\
 D:\SWP391\TimeshareExchange\TimeshareExchangeAPI\TimeshareExchangeAPI\obj\Debug\net6.0\TimeshareExchangeAPI.pdb
 D:\SWP391\TimeshareExchange\TimeshareExchangeAPI\TimeshareExchangeAPI\obj\Debug\net6.0\TimeshareExchangeAPI.genruntimeconfig.cache
 D:\SWP391\TimeshareExchange\TimeshareExchangeAPI\TimeshareExchangeAPI\obj\Debug\net6.0\ref\TimeshareExchangeAPI.dll
+D:\SWP391\TimeshareExchange\TimeshareExchangeAPI\TimeshareExchangeAPI\bin\Debug\net6.0\AutoMapper.dll
