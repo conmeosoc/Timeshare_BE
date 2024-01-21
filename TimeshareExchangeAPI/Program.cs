@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using TimeshareExchangeAPI.Repository.Models;
+using System.Text.Json.Serialization;
+using TimeshareExchangeAPI.Entities;
+using TimeshareExchangeAPI.Repository.Generic;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,10 +10,26 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddDirectoryBrowser();
+
 builder.Services.AddSwaggerGen();
+builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
+builder.Services.AddCors(opts =>
+{
+    opts.AddPolicy("corspolicy", build =>
+    {
+        build.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+    });
+});
 builder.Services.AddDbContext<TimeshareExchangeContext>(options =>
            options.UseSqlServer(builder.Configuration.GetConnectionString("TimeshareExchange")));
+builder.Services.AddAutoMapper(typeof(Program));
+
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -27,3 +45,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+app.UseCors("corspolicy");
+
+//Repository
+builder.Services.AddScoped<IGenericRepository<Account>, GenericRepository<Account>>();

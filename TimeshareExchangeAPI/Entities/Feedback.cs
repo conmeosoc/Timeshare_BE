@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TimeshareExchangeAPI.Repository.Models;
+namespace TimeshareExchangeAPI.Entities;
 
 public partial class Feedback
 {
@@ -17,5 +17,5 @@ public partial class Feedback
 
     public virtual Account? Member { get; set; }
 
-    public virtual Post? Post { get; set; }
+    public virtual ICollection<Realestate> Realestates { get; set; } = new List<Realestate>();
 }

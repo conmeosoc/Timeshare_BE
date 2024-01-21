@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using System.Runtime.CompilerServices;
+using TimeshareExchangeAPI.Entities;
 using TimeshareExchangeAPI.Repository.Models;
 
 namespace TimeshareExchangeAPI.Repository
@@ -8,7 +9,7 @@ namespace TimeshareExchangeAPI.Repository
     {
         public MappingProfile()
         {
-            CreateMap<Account, AccountModel>();
+            CreateMap<Account,AccountModel>().ReverseMap(); 
         }
 
     }

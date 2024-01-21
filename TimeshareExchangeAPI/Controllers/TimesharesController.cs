@@ -5,61 +5,61 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using TimeshareExchangeAPI.Repository.Models;
+using TimeshareExchangeAPI.Entities;
 
 namespace TimeshareExchangeAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PostsController : ControllerBase
+    public class TimesharesController : ControllerBase
     {
         private readonly TimeshareExchangeContext _context;
 
-        public PostsController(TimeshareExchangeContext context)
+        public TimesharesController(TimeshareExchangeContext context)
         {
             _context = context;
         }
 
-        // GET: api/Posts
+        // GET: api/Timeshares
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Post>>> GetPosts()
+        public async Task<ActionResult<IEnumerable<Timeshare>>> GetTimeshares()
         {
-          if (_context.Posts == null)
+          if (_context.Timeshares == null)
           {
               return NotFound();
           }
-            return await _context.Posts.ToListAsync();
+            return await _context.Timeshares.ToListAsync();
         }
 
-        // GET: api/Posts/5
+        // GET: api/Timeshares/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Post>> GetPost(string id)
+        public async Task<ActionResult<Timeshare>> GetTimeshare(string id)
         {
-          if (_context.Posts == null)
+          if (_context.Timeshares == null)
           {
               return NotFound();
           }
-            var post = await _context.Posts.FindAsync(id);
+            var timeshare = await _context.Timeshares.FindAsync(id);
 
-            if (post == null)
+            if (timeshare == null)
             {
                 return NotFound();
             }
 
-            return post;
+            return timeshare;
         }
 
-        // PUT: api/Posts/5
+        // PUT: api/Timeshares/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPost(string id, Post post)
+        public async Task<IActionResult> PutTimeshare(string id, Timeshare timeshare)
         {
-            if (id != post.Id)
+            if (id != timeshare.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(post).State = EntityState.Modified;
+            _context.Entry(timeshare).State = EntityState.Modified;
 
             try
             {
@@ -67,7 +67,7 @@ namespace TimeshareExchangeAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PostExists(id))
+                if (!TimeshareExists(id))
                 {
                     return NotFound();
                 }
@@ -80,23 +80,23 @@ namespace TimeshareExchangeAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Posts
+        // POST: api/Timeshares
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Post>> PostPost(Post post)
+        public async Task<ActionResult<Timeshare>> PostTimeshare(Timeshare timeshare)
         {
-          if (_context.Posts == null)
+          if (_context.Timeshares == null)
           {
-              return Problem("Entity set 'TimeshareExchangeContext.Posts'  is null.");
+              return Problem("Entity set 'TimeshareExchangeContext.Timeshares'  is null.");
           }
-            _context.Posts.Add(post);
+            _context.Timeshares.Add(timeshare);
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (PostExists(post.Id))
+                if (TimeshareExists(timeshare.Id))
                 {
                     return Conflict();
                 }
@@ -106,32 +106,32 @@ namespace TimeshareExchangeAPI.Controllers
                 }
             }
 
-            return CreatedAtAction("GetPost", new { id = post.Id }, post);
+            return CreatedAtAction("GetTimeshare", new { id = timeshare.Id }, timeshare);
         }
 
-        // DELETE: api/Posts/5
+        // DELETE: api/Timeshares/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePost(string id)
+        public async Task<IActionResult> DeleteTimeshare(string id)
         {
-            if (_context.Posts == null)
+            if (_context.Timeshares == null)
             {
                 return NotFound();
             }
-            var post = await _context.Posts.FindAsync(id);
-            if (post == null)
+            var timeshare = await _context.Timeshares.FindAsync(id);
+            if (timeshare == null)
             {
                 return NotFound();
             }
 
-            _context.Posts.Remove(post);
+            _context.Timeshares.Remove(timeshare);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool PostExists(string id)
+        private bool TimeshareExists(string id)
         {
-            return (_context.Posts?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Timeshares?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

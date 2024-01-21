@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "krfCNx0P4YQtpxaJaD+652c1TaVhvSaKf3v5F27TtY0Kg4ghIpsPmezqc3Roi+2NNMje3ejVUMoUcDQs98vkEQ==",
+  "dgSpecHash": "V63qsHQSupfJ/NPJfFAdt87m3DyCuWLA8Q6/S92Gg/RZQ+g86UiXBEj0fYoE5fHVjWStXdrWV8tub2cogx3x0w==",
   "success": true,
   "projectFilePath": "D:\\SWP391\\TimeshareExchange\\TimeshareExchangeAPI\\TimeshareExchangeAPI\\TimeshareExchangeAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\minht\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\minht\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\minht\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\minht\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\minht\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",

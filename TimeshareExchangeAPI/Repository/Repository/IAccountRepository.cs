@@ -1,9 +1,14 @@
-﻿using TimeshareExchangeAPI.Repository.Generic;
-using TimeshareExchangeAPI.Repository.Models;
+﻿using TimeshareExchangeAPI.Entities;
+using TimeshareExchangeAPI.Repository.Generic;
 
 namespace TimeshareExchangeAPI.Repository.Repository
 {
     public interface IAccountRepository : IGenericRepository<Account>
     {
+
+    }
+    public class AccountRepository : GenericRepository<Account> , IAccountRepository
+    {
+
     }
 }

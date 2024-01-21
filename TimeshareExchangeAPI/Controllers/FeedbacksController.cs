@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using TimeshareExchangeAPI.Repository.Models;
+using TimeshareExchangeAPI.Entities;
 
 namespace TimeshareExchangeAPI.Controllers
 {

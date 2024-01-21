@@ -1,50 +1,85 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using TimeshareExchangeAPI.Repository.Models;
-using TimeshareExchangeAPI.Repository.UOW;
+using TimeshareExchangeAPI.Entities;
 
 namespace TimeshareExchangeAPI.Repository.Generic
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
-        public readonly IUnitOfWork _unitOfWork;
         protected readonly TimeshareExchangeContext _context;
-        protected DbSet<TEntity> _entities;
-        public GenericRepository(TimeshareExchangeContext context, IUnitOfWork unitOfWork)
+        private DbSet<TEntity> _dbSet;
+        public GenericRepository()
         {
-            _context = context;
-            _entities = _context.Set<TEntity>();
-            _unitOfWork = unitOfWork;
-        }
-        public virtual async Task Add(TEntity entity)
-        {
-            _entities.Add(entity);
-            await _context.SaveChangesAsync();
+            _context = new TimeshareExchangeContext();
+            _dbSet = _context.Set<TEntity>();
         }
 
-        public virtual async Task Delete(TEntity entity)
+        protected DbSet<TEntity> DbSet
         {
-            _entities.Remove(entity);
-            await _context.SaveChangesAsync();
+            get
+            {
+                if (_dbSet != null)
+                {
+                    return _dbSet;
+                }
+
+                _dbSet = _context.Set<TEntity>();
+                return _dbSet;
+            }
         }
 
-        public virtual async Task<IEnumerable<TEntity>> Get(Expression<Func<TEntity, bool>>? expression = null, params string[] includeProperties)
+        public void Create(TEntity entity)
         {
-            var filter = _entities.AsNoTracking();
-            foreach (var property in includeProperties)
-            {
-                filter = filter.Include(property);
-            }
-            if (expression != null)
-            {
-                filter = filter.Where(expression);
-            }
-            return await filter.ToListAsync();
+            _dbSet.Add(entity);
+            _context.SaveChanges();
         }
-        public virtual async Task Update(TEntity entity)
+
+        public void Delete(TEntity entity)
         {
-            _entities.Update(entity);
-            await _context.SaveChangesAsync();
+            _dbSet.Remove(entity);
+            _context.SaveChanges();
+        }
+
+        public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> predicate = null, params Expression<Func<TEntity, object>>[] includeProperties)
+        {
+            IQueryable<TEntity> queryable = DbSet.AsTracking();
+            includeProperties = includeProperties?.Distinct().ToArray();
+            if (includeProperties?.Any() ?? false)
+            {
+                Expression<Func<TEntity, object>>[] array = includeProperties;
+                foreach (Expression<Func<TEntity, object>> navigationPropertyPath in array)
+                {
+                    queryable = queryable.Include(navigationPropertyPath);
+                }
+            }
+
+            return predicate == null ? queryable : queryable.Where(predicate);
+        }
+
+        public virtual TEntity GetSingle(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] includeProperties)
+        {
+            return Get(predicate, includeProperties).FirstOrDefault();
+        }
+
+        public List<TEntity> GetAll()
+        {
+            return _dbSet.ToList();
+        }
+
+        public TEntity GetById(string id)
+        {
+            return _dbSet.Find(id);
+        }
+
+        public void Update(TEntity entity)
+        {
+            _dbSet.Update(entity);
+            _context.SaveChanges();
+        }
+
+        public void UpdatePatch(TEntity entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

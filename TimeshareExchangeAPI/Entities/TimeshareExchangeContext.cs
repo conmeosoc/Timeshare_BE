@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace TimeshareExchangeAPI.Repository.Models;
+namespace TimeshareExchangeAPI.Entities;
 
 public partial class TimeshareExchangeContext : DbContext
 {
@@ -24,8 +24,6 @@ public partial class TimeshareExchangeContext : DbContext
     public virtual DbSet<Feedback> Feedbacks { get; set; }
 
     public virtual DbSet<Payment> Payments { get; set; }
-
-    public virtual DbSet<Post> Posts { get; set; }
 
     public virtual DbSet<Realestate> Realestates { get; set; }
 
@@ -143,10 +141,6 @@ public partial class TimeshareExchangeContext : DbContext
             entity.HasOne(d => d.Member).WithMany(p => p.Feedbacks)
                 .HasForeignKey(d => d.MemberId)
                 .HasConstraintName("FK_Feedback_Account");
-
-            entity.HasOne(d => d.Post).WithMany(p => p.Feedbacks)
-                .HasForeignKey(d => d.PostId)
-                .HasConstraintName("FK_Feedback_post");
         });
 
         modelBuilder.Entity<Payment>(entity =>
@@ -172,27 +166,6 @@ public partial class TimeshareExchangeContext : DbContext
             entity.HasOne(d => d.Member).WithMany(p => p.Payments)
                 .HasForeignKey(d => d.MemberId)
                 .HasConstraintName("FK_payment_Account");
-        });
-
-        modelBuilder.Entity<Post>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK_post");
-
-            entity.ToTable("Post");
-
-            entity.Property(e => e.Id)
-                .HasMaxLength(50)
-                .HasColumnName("id");
-            entity.Property(e => e.Price)
-                .HasColumnType("money")
-                .HasColumnName("price");
-            entity.Property(e => e.RealestateId)
-                .HasMaxLength(50)
-                .HasColumnName("realestateID");
-
-            entity.HasOne(d => d.Realestate).WithMany(p => p.Posts)
-                .HasForeignKey(d => d.RealestateId)
-                .HasConstraintName("FK_post_Realestate");
         });
 
         modelBuilder.Entity<Realestate>(entity =>
@@ -221,6 +194,10 @@ public partial class TimeshareExchangeContext : DbContext
             entity.Property(e => e.Status)
                 .HasMaxLength(50)
                 .HasColumnName("status");
+
+            entity.HasOne(d => d.FeedbackNavigation).WithMany(p => p.Realestates)
+                .HasForeignKey(d => d.Feedback)
+                .HasConstraintName("FK_Realestate_Feedback");
         });
 
         modelBuilder.Entity<Timeshare>(entity =>

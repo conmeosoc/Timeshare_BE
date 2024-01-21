@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TimeshareExchangeAPI.Repository.Models;
+namespace TimeshareExchangeAPI.Entities;
 
 public partial class Payment
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TimeshareExchangeAPI.Repository.Models;
+namespace TimeshareExchangeAPI.Entities;
 
 public partial class Realestate
 {
@@ -19,7 +19,7 @@ public partial class Realestate
 
     public string? Status { get; set; }
 
-    public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
+    public virtual Feedback? FeedbackNavigation { get; set; }
 
     public virtual ICollection<Timeshare> Timeshares { get; set; } = new List<Timeshare>();
 }
