@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
-using TimeshareExchangeAPI.Entities;
 using TimeshareExchangeAPI.Repository.Generic;
+using TimeshareExchangeAPI.Service;
+using TimeshareExchangeAPI.Service.IService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,8 +24,8 @@ builder.Services.AddCors(opts =>
         build.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
     });
 });
-builder.Services.AddDbContext<TimeshareExchangeContext>(options =>
-           options.UseSqlServer(builder.Configuration.GetConnectionString("TimeshareExchange")));
+//builder.Services.AddDbContext<TimeshareExchangeContext>(options =>
+//           options.UseSqlServer(builder.Configuration.GetConnectionString("TimeshareExchange")));
 builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
@@ -47,5 +48,7 @@ app.MapControllers();
 app.Run();
 app.UseCors("corspolicy");
 
-//Repository
-builder.Services.AddScoped<IGenericRepository<Account>, GenericRepository<Account>>();
+////Repository
+//builder.Services.AddScoped<IGenericRepository<Account>, GenericRepository<Account>>();
+////Service
+//builder.Services.AddScoped<IAccountService, AccountService>();
