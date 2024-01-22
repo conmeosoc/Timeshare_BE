@@ -29,6 +29,12 @@ builder.Services.AddDbContext<TimeshareExchangeContext>(options =>
            options.UseSqlServer(builder.Configuration.GetConnectionString("TimeshareExchange")));
 builder.Services.AddAutoMapper(typeof(Program));
 
+//Repository
+builder.Services.AddScoped<IGenericRepository<Account>, GenericRepository<Account>>();
+//Service
+builder.Services.AddScoped<IAccountService, AccountService>();
+
+
 var app = builder.Build();
 
 
@@ -49,7 +55,3 @@ app.MapControllers();
 app.Run();
 app.UseCors("corspolicy");
 
-//Repository
-builder.Services.AddScoped<IGenericRepository<Account>, GenericRepository<Account>>();
-//Service
-builder.Services.AddScoped<IAccountService, AccountService>();
