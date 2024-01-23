@@ -4,6 +4,8 @@ namespace TimeshareExchangeAPI.Service.IService
 {
     public interface IAccountService
     {
+        public ResponseModel SignUp(AccountModel signUpModel);
+
         public ResponseModel GetAll();
         public ResponseModel GetAccountByName(string? name);
 

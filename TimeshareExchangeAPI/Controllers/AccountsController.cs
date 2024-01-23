@@ -21,6 +21,13 @@ namespace TimeshareExchangeAPI.Controllers
         {
             _accountService = accountService;
         }
+        [HttpPost]
+        [Route("api/[controller]/SignUpUser")]
+        public IActionResult CreateUser(AccountModel signUpModel)
+        {
+            var responseModel =  _accountService.SignUp(signUpModel);
+            return Ok(responseModel);
+        }
 
         // GET: api/Accounts
         [HttpGet]
@@ -30,6 +37,7 @@ namespace TimeshareExchangeAPI.Controllers
             var responseModel = _accountService.GetAll();
             return Ok(responseModel);
         }
+        
 
         // GET: api/Accounts/5
         [HttpGet]

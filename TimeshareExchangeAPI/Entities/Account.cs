@@ -8,7 +8,8 @@ public partial class Account
     public string Id { get; set; } = null!;
 
     public string? FullName { get; set; }
-
+    public string? Username { get; set; }
+    public string? Password { get; set; }
     public bool? Sex { get; set; }
 
     public string? Address { get; set; }

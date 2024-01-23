@@ -17,7 +17,34 @@ namespace TimeshareExchangeAPI.Service
             _mapper = mapper;
 
         }
-
+        public ResponseModel SignUp(AccountModel signUpModel)
+        {
+            var userEntity = _mapper.Map<Account>(signUpModel);
+            var existUserSignUp = _accountRepository.GetSingle(x => x.Username.Equals(signUpModel.Username));
+            if (existUserSignUp != null)
+            {
+                return new ResponseModel
+                {
+                    MessageError = "Username đã tồn tại",
+                    StatusCode = StatusCodes.Status400BadRequest
+                };
+            }
+            _accountRepository.Create(userEntity);
+            userEntity.Id = Guid.NewGuid().ToString();
+            //var sendEmailModel = new SendMailModel()
+            //{
+            //    Content = "Code: " + userEntity.VerifyEmail,
+            //    ReceiveAddress = userEntity.userEmail,
+            //    Subject = "Verify Account",
+            //};
+            //_emailService.SendEmail(sendEmailModel);
+            return new ResponseModel
+            {
+                Data = userEntity,
+                MessageError = "",
+                StatusCode = StatusCodes.Status200OK
+            };
+        }
 
 
         //Get ALL

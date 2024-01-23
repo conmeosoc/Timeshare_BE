@@ -47,7 +47,13 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasColumnName("address");
             entity.Property(e => e.FullName)
                 .HasMaxLength(50)
-                .HasColumnName("fullName");
+                .HasColumnName("fullName"); 
+            entity.Property(e => e.Username)
+                .HasMaxLength(50)
+                .HasColumnName("username"); 
+            entity.Property(e => e.Password)
+                .HasMaxLength(50)
+                .HasColumnName("password");
             entity.Property(e => e.Phone).HasColumnName("phone");
             entity.Property(e => e.Sex).HasColumnName("sex");
             entity.Property(e => e.Status).HasColumnName("status");
