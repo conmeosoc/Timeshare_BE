@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TimeshareExchangeAPI.Entities;
+using TimeshareExchangeAPI.Repository.Models;
+using TimeshareExchangeAPI.Service.IService;
 
 namespace TimeshareExchangeAPI.Controllers
 {
@@ -13,125 +15,48 @@ namespace TimeshareExchangeAPI.Controllers
     [ApiController]
     public class RealestatesController : ControllerBase
     {
-        private readonly TimeshareExchangeContext _context;
+        private readonly IRealestateService _realestateService;
 
-        public RealestatesController(TimeshareExchangeContext context)
+        public RealestatesController(IRealestateService realestateService)
         {
-            _context = context;
+            _realestateService = realestateService;
         }
 
-        // GET: api/Realestates
+        // GET: api/Accounts
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Realestate>>> GetRealestates()
+        [Route("api/[controller]/GetAll")]
+        public IActionResult GetAllTimeshare()
         {
-          if (_context.Realestates == null)
-          {
-              return NotFound();
-          }
-            return await _context.Realestates.ToListAsync();
+            var responseModel = _realestateService.GetAll();
+            return Ok(responseModel);
         }
 
-        // GET: api/Realestates/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Realestate>> GetRealestate(string id)
+        // GET: api/Accounts/5
+        [HttpGet]
+        [Route("api/[controller]/GetbyRealestateID")]
+
+        public IActionResult GetRealestatebyID(string id)
         {
-          if (_context.Realestates == null)
-          {
-              return NotFound();
-          }
-            var realestate = await _context.Realestates.FindAsync(id);
-
-            if (realestate == null)
-            {
-                return NotFound();
-            }
-
-            return realestate;
+            var responseModel = _realestateService.GetSingle(id);
+            return Ok(responseModel);
         }
 
-        // PUT: api/Realestates/5
+        // PUT: api/Accounts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutRealestate(string id, Realestate realestate)
+        [HttpPut]
+        [Route("api/[controller]/UpdateAccount")]
+
+        public async Task<IActionResult> PutTimeshare(string id, TimeshareModel timeshare)
         {
-            if (id != realestate.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(realestate).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!RealestateExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            var responseModel = _realestateService.UpdateRealestate(id, timeshare);
+            return Ok(responseModel);
         }
 
-        // POST: api/Realestates
+        // POST: api/Accounts
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Realestate>> PostRealestate(Realestate realestate)
-        {
-          if (_context.Realestates == null)
-          {
-              return Problem("Entity set 'TimeshareExchangeContext.Realestates'  is null.");
-          }
-            _context.Realestates.Add(realestate);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (RealestateExists(realestate.Id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
 
-            return CreatedAtAction("GetRealestate", new { id = realestate.Id }, realestate);
-        }
+        // DELETE: api/Accounts/5
 
-        // DELETE: api/Realestates/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRealestate(string id)
-        {
-            if (_context.Realestates == null)
-            {
-                return NotFound();
-            }
-            var realestate = await _context.Realestates.FindAsync(id);
-            if (realestate == null)
-            {
-                return NotFound();
-            }
 
-            _context.Realestates.Remove(realestate);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool RealestateExists(string id)
-        {
-            return (_context.Realestates?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
     }
 }

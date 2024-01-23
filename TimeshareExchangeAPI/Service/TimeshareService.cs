@@ -6,14 +6,14 @@ using TimeshareExchangeAPI.Service.IService;
 
 namespace TimeshareExchangeAPI.Service
 {
-    public class AccountService : IAccountService
+    public class TimeshareService : ITimeshareService
     {
-        private readonly IGenericRepository<Account> _accountRepository;
+        private readonly IGenericRepository<Timeshare> _timeshareRepository;
         private readonly IMapper _mapper;
 
-        public AccountService(IGenericRepository<Account> repositoryBase, IMapper mapper)
+        public TimeshareService(IGenericRepository<Timeshare> repositoryBase, IMapper mapper)
         {
-            _accountRepository = repositoryBase;
+            _timeshareRepository = repositoryBase;
             _mapper = mapper;
 
         }
@@ -23,8 +23,8 @@ namespace TimeshareExchangeAPI.Service
         //Get ALL
         public ResponseModel GetAll()
         {
-            var entities = _accountRepository.GetAll().ToList();
-            var response = _mapper.Map<List<AccountModel>>(entities.ToList());
+            var entities = _timeshareRepository.GetAll().ToList();
+            var response = _mapper.Map<List<TimeshareModel>>(entities.ToList());
             return new ResponseModel
             {
                 Data = response,
@@ -33,9 +33,9 @@ namespace TimeshareExchangeAPI.Service
             };
         }
 
-        public ResponseModel GetAccountByName(string? name)
+        public ResponseModel GetTimeshareByRealestate(string? name)
         {
-            var response = _accountRepository.Get(x => x.FullName == name);
+            var response = _timeshareRepository.Get(x => x.RealestateId == name);
             return new ResponseModel
             {
                 Data = response,
@@ -47,8 +47,8 @@ namespace TimeshareExchangeAPI.Service
         //GetID
         public ResponseModel GetSingle(string id)
         {
-            var AccountEntity = _accountRepository.GetSingle(x => x.Id.Equals(id));
-            var responseAccountModel = _mapper.Map<AccountModel>(AccountEntity);
+            var AccountEntity = _timeshareRepository.GetSingle(x => x.Id.Equals(id));
+            var responseAccountModel = _mapper.Map<TimeshareModel>(AccountEntity);
             return new ResponseModel
             {
                 Data = AccountEntity,
@@ -58,10 +58,10 @@ namespace TimeshareExchangeAPI.Service
         }
 
         //Update
-        public ResponseModel UpdateAccount(string id, AccountModel requestAccountModel)
+        public ResponseModel UpdateTimeshare(string id, TimeshareModel requestTimeshareModel)
         {
-            var Account = _accountRepository.GetSingle(x => id.Equals(x.Id));
-            if (Account == null)
+            var Timeshare = _timeshareRepository.GetSingle(x => id.Equals(x.Id));
+            if (Timeshare == null)
             {
                 return new ResponseModel
                 {
@@ -69,8 +69,8 @@ namespace TimeshareExchangeAPI.Service
                     StatusCode = StatusCodes.Status404NotFound
                 };
             }
-            _mapper.Map(requestAccountModel, Account);
-            _accountRepository.Update(Account);
+            _mapper.Map(requestTimeshareModel, Timeshare);
+            _timeshareRepository.Update(Timeshare);
             return new ResponseModel
             {
                 StatusCode = StatusCodes.Status200OK

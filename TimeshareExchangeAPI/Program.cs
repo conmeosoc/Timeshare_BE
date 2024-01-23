@@ -31,8 +31,13 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 //Repository
 builder.Services.AddScoped<IGenericRepository<Account>, GenericRepository<Account>>();
+builder.Services.AddScoped<IGenericRepository<Timeshare>, GenericRepository<Timeshare>>();
+builder.Services.AddScoped<IGenericRepository<Realestate>, GenericRepository<Realestate>>();
+
 //Service
 builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<ITimeshareService, TimeshareService>();
+builder.Services.AddScoped<IRealestateService, RealestateService>();
 
 
 var app = builder.Build();
