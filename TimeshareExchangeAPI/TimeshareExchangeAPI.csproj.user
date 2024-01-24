@@ -10,6 +10,6 @@
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_DbContextTypeFullName>TimeshareExchangeAPI.Entities.TimeshareExchangeContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
-    <NameOfLastUsedPublishProfile>D:\SWP391\TimeshareExchange\TimeshareExchangeAPI\TimeshareExchangeAPI\Properties\PublishProfiles\meokool-001-site1 - FTP.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>D:\SWP391\TimeshareExchange\TimeshareExchangeAPI\TimeshareExchangeAPI\Properties\PublishProfiles\meokool-001-site1 - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
