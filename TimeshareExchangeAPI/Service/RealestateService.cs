@@ -24,7 +24,7 @@ namespace TimeshareExchangeAPI.Service
         public ResponseModel GetAll()
         {
             var entities = _timeshareRepository.GetAll().ToList();
-            var response = _mapper.Map<List<TimeshareModel>>(entities.ToList());
+            var response = _mapper.Map<List<RealestateModel>>(entities.ToList());
             return new ResponseModel
             {
                 Data = response,
