@@ -10,6 +10,8 @@ namespace TimeshareExchangeAPI.Repository
         public MappingProfile()
         {
            CreateMap<Account,AccountModel>().ReverseMap(); 
+           CreateMap<Account,AccountRequestModel>().ReverseMap(); 
+           CreateMap<Account,Accountsta>().ReverseMap(); 
         }
 
     }

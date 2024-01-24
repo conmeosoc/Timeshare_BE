@@ -23,7 +23,7 @@ namespace TimeshareExchangeAPI.Controllers
         }
         [HttpPost]
         [Route("api/[controller]/SignUpUser")]
-        public IActionResult CreateUser(AccountModel signUpModel)
+        public IActionResult CreateUser(AccountRequestModel signUpModel)
         {
             var responseModel =  _accountService.SignUp(signUpModel);
             return Ok(responseModel);
@@ -54,7 +54,7 @@ namespace TimeshareExchangeAPI.Controllers
         [HttpPut]
         [Route("api/[controller]/UpdateAccount")]
 
-        public async Task<IActionResult> PutAccount(string id, AccountModel account)
+        public async Task<IActionResult> PutAccount(string id, AccountRequestModel account)
         {
             var responseModel = _accountService.UpdateAccount(id, account);
             return Ok(responseModel);
@@ -65,7 +65,14 @@ namespace TimeshareExchangeAPI.Controllers
 
         // DELETE: api/Accounts/5
 
+        [HttpPut]
+        [Route("api/[controller]/UpdateAccountStatus")]
 
+        public async Task<IActionResult> PutAccountSta(string id, Accountsta account)
+        {
+            var responseModel = _accountService.UpdateAccountStatus(id, account);
+            return Ok(responseModel);
+        }
 
     }
 }

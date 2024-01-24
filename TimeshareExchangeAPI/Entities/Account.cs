@@ -14,7 +14,7 @@ public partial class Account
 
     public string? Address { get; set; }
 
-    public int? Phone { get; set; }
+    public string? Phone { get; set; }
 
     public bool? Status { get; set; }
 

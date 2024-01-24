@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System.Runtime;
 using TimeshareExchangeAPI.Entities;
 using TimeshareExchangeAPI.Repository.Generic;
 using TimeshareExchangeAPI.Repository.Models;
@@ -17,7 +18,7 @@ namespace TimeshareExchangeAPI.Service
             _mapper = mapper;
 
         }
-        public ResponseModel SignUp(AccountModel signUpModel)
+        public ResponseModel SignUp(AccountRequestModel signUpModel)
         {
             var userEntity = _mapper.Map<Account>(signUpModel);
             var existUserSignUp = _accountRepository.GetSingle(x => x.Username.Equals(signUpModel.Username));
@@ -29,8 +30,9 @@ namespace TimeshareExchangeAPI.Service
                     StatusCode = StatusCodes.Status400BadRequest
                 };
             }
-            _accountRepository.Create(userEntity);
             userEntity.Id = Guid.NewGuid().ToString();
+            _accountRepository.Create(userEntity);
+
             //var sendEmailModel = new SendMailModel()
             //{
             //    Content = "Code: " + userEntity.VerifyEmail,
@@ -85,7 +87,7 @@ namespace TimeshareExchangeAPI.Service
         }
 
         //Update
-        public ResponseModel UpdateAccount(string id, AccountModel requestAccountModel)
+        public ResponseModel UpdateAccount(string id, AccountRequestModel requestAccountModel)
         {
             var Account = _accountRepository.GetSingle(x => id.Equals(x.Id));
             if (Account == null)
@@ -97,13 +99,34 @@ namespace TimeshareExchangeAPI.Service
                 };
             }
             _mapper.Map(requestAccountModel, Account);
+            Account.Id = id;
             _accountRepository.Update(Account);
             return new ResponseModel
             {
+                Data = Account,
                 StatusCode = StatusCodes.Status200OK
             };
         }
-
+        public ResponseModel UpdateAccountStatus(string id, Accountsta account) 
+        {
+            var Account = _accountRepository.GetSingle(x => id.Equals(x.Id));
+            if (Account == null)
+            {
+                return new ResponseModel
+                {
+                    MessageError = "Khong tim thay",
+                    StatusCode = StatusCodes.Status404NotFound
+                };
+            }
+            _mapper.Map(account, Account);
+            Account.Id = id;
+            _accountRepository.Update(Account);
+            return new ResponseModel
+            {
+                Data = Account,
+                StatusCode = StatusCodes.Status200OK
+            };
+        }
 
 
     }

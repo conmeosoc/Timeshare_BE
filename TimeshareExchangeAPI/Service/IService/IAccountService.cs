@@ -4,13 +4,14 @@ namespace TimeshareExchangeAPI.Service.IService
 {
     public interface IAccountService
     {
-        public ResponseModel SignUp(AccountModel signUpModel);
+        public ResponseModel SignUp(AccountRequestModel signUpModel);
 
         public ResponseModel GetAll();
         public ResponseModel GetAccountByName(string? name);
 
         public ResponseModel GetSingle(string id);
-        public ResponseModel UpdateAccount(string id, AccountModel accountModel);
+        public ResponseModel UpdateAccount(string id, AccountRequestModel accountModel);
+        public ResponseModel UpdateAccountStatus(string id, Accountsta accountModel);
 
     }
 }
