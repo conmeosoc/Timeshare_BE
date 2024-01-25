@@ -29,6 +29,14 @@ namespace TimeshareExchangeAPI.Controllers
             return Ok(responseModel);
         }
 
+        [HttpGet]
+        [Route("api/[controller]/Signin")]
+        public IActionResult Signin(string username, string password)
+        {
+            var responseModel = _accountService.Signin(username, password);
+            return Ok(responseModel);
+        }
+
         // GET: api/Accounts
         [HttpGet]
         [Route("api/[controller]/GetAll")]

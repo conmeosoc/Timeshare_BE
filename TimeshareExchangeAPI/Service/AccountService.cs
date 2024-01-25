@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using System.Runtime;
 using TimeshareExchangeAPI.Entities;
 using TimeshareExchangeAPI.Repository.Generic;
@@ -85,7 +86,27 @@ namespace TimeshareExchangeAPI.Service
                 StatusCode = StatusCodes.Status200OK
             };
         }
+        public ResponseModel Signin(string username, string password)
+        {
+            var AccountEntity = _accountRepository.GetSingle(x => x.Username == username && x.Password == password);
+            if(AccountEntity == null)
+            {
+                return new ResponseModel
+                {
+                    MessageError = "Sai username hoac password",
+                    StatusCode = StatusCodes.Status404NotFound
+                };
 
+            };                
+            var responseAccountModel = _mapper.Map<AccountModel>(AccountEntity);
+
+            return new ResponseModel
+            {
+                Data = AccountEntity,
+                MessageError = "Dang nhap thanh cong!",
+                StatusCode = StatusCodes.Status200OK
+            };
+        }
         //Update
         public ResponseModel UpdateAccount(string id, AccountRequestModel requestAccountModel)
         {
