@@ -103,7 +103,7 @@ namespace TimeshareExchangeAPI.Service
             return new ResponseModel
             {
                 Data = AccountEntity,
-                MessageError = "Dang nhap thanh cong!",
+                MessageError = "",
                 StatusCode = StatusCodes.Status200OK
             };
         }
@@ -148,7 +148,25 @@ namespace TimeshareExchangeAPI.Service
                 StatusCode = StatusCodes.Status200OK
             };
         }
-
+        //Delete
+        public ResponseModel DeleteAccount(string id)
+        {
+            var Account = _accountRepository.GetSingle(x => id.Equals(x.Id));
+            if (Account == null)
+            {
+                return new ResponseModel
+                {
+                    MessageError = "Khong tim thay",
+                    StatusCode = StatusCodes.Status404NotFound
+                };
+            }
+            _accountRepository.Delete(Account);
+            return new ResponseModel
+            {
+                MessageError = "Xoa thanh cong",
+                StatusCode = StatusCodes.Status200OK
+            };
+        }
 
     }
 }

@@ -67,6 +67,14 @@ namespace TimeshareExchangeAPI.Controllers
             var responseModel = _accountService.UpdateAccount(id, account);
             return Ok(responseModel);
         }
+        [HttpDelete]
+        [Route("api/[controller]/DeleteAccount")]
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            var responseModel = _accountService.DeleteAccount(id);
+            return Ok(responseModel);
+        }
 
         // POST: api/Accounts
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
