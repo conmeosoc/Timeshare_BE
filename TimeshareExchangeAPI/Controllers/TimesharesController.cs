@@ -44,7 +44,7 @@ namespace TimeshareExchangeAPI.Controllers
         // PUT: api/Accounts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut]
-        [Route("api/[controller]/UpdateAccount")]
+        [Route("api/[controller]/UpdateTimeshare")]
 
         public async Task<IActionResult> PutTimeshare(string id, TimeshareModel timeshare)
         {

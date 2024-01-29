@@ -21,11 +21,11 @@ namespace TimeshareExchangeAPI.Service
 
 
         //Get ALL
-        public ResponseModel GetAll()
+        public ResponseModel<List<TimeshareModel>> GetAll()
         {
             var entities = _timeshareRepository.GetAll().ToList();
             var response = _mapper.Map<List<TimeshareModel>>(entities.ToList());
-            return new ResponseModel
+            return new ResponseModel<List<TimeshareModel>>
             {
                 Data = response,
                 MessageError = "",
@@ -33,10 +33,10 @@ namespace TimeshareExchangeAPI.Service
             };
         }
 
-        public ResponseModel GetTimeshareByRealestate(string? name)
+        public ResponseModel<IQueryable<Timeshare>> GetTimeshareByRealestate(string? name)
         {
             var response = _timeshareRepository.Get(x => x.RealestateId == name);
-            return new ResponseModel
+            return new ResponseModel<IQueryable<Timeshare>>
             {
                 Data = response,
                 MessageError = "",
@@ -45,11 +45,11 @@ namespace TimeshareExchangeAPI.Service
         }
 
         //GetID
-        public ResponseModel GetSingle(string id)
+        public ResponseModel<Timeshare> GetSingle(string id)
         {
             var AccountEntity = _timeshareRepository.GetSingle(x => x.Id.Equals(id));
             var responseAccountModel = _mapper.Map<TimeshareModel>(AccountEntity);
-            return new ResponseModel
+            return new ResponseModel<Timeshare>
             {
                 Data = AccountEntity,
                 MessageError = "",

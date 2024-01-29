@@ -11,7 +11,6 @@ using TimeshareExchangeAPI.Service.IService;
 
 namespace TimeshareExchangeAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class RealestatesController : ControllerBase
     {
