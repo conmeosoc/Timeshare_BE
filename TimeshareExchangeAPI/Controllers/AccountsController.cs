@@ -23,6 +23,7 @@ namespace TimeshareExchangeAPI.Controllers
         {
             _accountService = accountService;
         }
+        [AllowAnonymous]
         [HttpPost]
         [Route("api/[controller]/SignUpUser")]
         public IActionResult CreateUser(AccountRequestModel signUpModel)

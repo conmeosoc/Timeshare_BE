@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Update;
 using Microsoft.IdentityModel.Tokens;
+using System.Configuration;
 using System.IdentityModel.Tokens.Jwt;
 using System.Runtime;
 using System.Security.Claims;
@@ -15,6 +16,7 @@ namespace TimeshareExchangeAPI.Service
 {
     public class AccountService : IAccountService
     {
+
         private readonly IGenericRepository<Account> _accountRepository;
         private readonly IMapper _mapper;
 
@@ -81,6 +83,7 @@ namespace TimeshareExchangeAPI.Service
         }
         public ResponseModel<Token> Signin(string username, string password)
         {
+
             var AccountEntity = _accountRepository.GetSingle(x => x.Username == username && x.Password == password);
             if(AccountEntity == null)
             {
@@ -103,7 +106,7 @@ namespace TimeshareExchangeAPI.Service
         }
         private static Token GenerateJSONWebToken(AccountModel account)
         {
-            DateTime expires = DateTime.Now.AddSeconds(60);
+            DateTime expires = DateTime.Now.AddSeconds(60000);
             var securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJ0aGFvbmhtIiwiVXNlcm5hbWUiOiJKYXZhSW5Vc2UiLCJleHAiOjE3MDY1MTMyNzMsImlhdCI6MTcwNjUxMzI3M30.YWO4zbj19dDtiECHpJMXscZJJipmeKBlZjzCystgr_4\r\n"));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 

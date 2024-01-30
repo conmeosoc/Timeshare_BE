@@ -14,6 +14,7 @@ namespace TimeshareExchangeAPI.Repository
            CreateMap<Account,Accountsta>().ReverseMap(); 
            CreateMap<Realestate,RealestateModel>().ReverseMap(); 
            CreateMap<Timeshare,TimeshareModel>().ReverseMap(); 
+           CreateMap<Feedback,FeedbackModel>().ReverseMap();
         }
 
     }
