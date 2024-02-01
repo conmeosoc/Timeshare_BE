@@ -18,7 +18,7 @@ namespace TimeshareExchangeAPI.Service
 
         }
 
-
+        
 
         //Get ALL
         public ResponseModel<List<RealestateModel>> GetAll()

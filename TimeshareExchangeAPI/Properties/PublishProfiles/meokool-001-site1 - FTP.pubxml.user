@@ -7,6 +7,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword />
+    <_PublishTargetUrl>ftp://win5251.site4now.net:21/site1</_PublishTargetUrl>
+    <History>False|2024-02-01T06:54:08.9528804Z;</History>
+    <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
     <DestinationConnectionStrings Include="TimeshareExchange">

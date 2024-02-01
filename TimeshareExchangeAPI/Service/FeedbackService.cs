@@ -17,6 +17,20 @@ namespace TimeshareExchangeAPI.Service
             _mapper = mapper;
 
         }
+        public ResponseModel<Feedback> CreateFeedback(FeedbackModel signUpModel)
+        {
+            var userEntity = _mapper.Map<Feedback>(signUpModel);
+            
+            userEntity.Id = Guid.NewGuid().ToString();
+            _feedbackrepository.Create(userEntity);
+
+            return new ResponseModel<Feedback>
+            {
+                Data = userEntity,
+                MessageError = "",
+                StatusCode = StatusCodes.Status200OK
+            };
+        }
 
         public ResponseModel<List<FeedbackModel>> GetAll()
         {
@@ -42,18 +56,17 @@ namespace TimeshareExchangeAPI.Service
             };
         }
         //GetbymemberID
-        public ResponseModel<IQueryable<FeedbackModel>> GetfeedbackbyMemberID(string? id)
+        public ResponseModel<IQueryable<Feedback>> GetfeedbackbyMemberID(string? id)
         {
             var response = _feedbackrepository.Get(x => x.MemberId == id);
-            var responsefeedbackModel = _mapper.Map<IQueryable<FeedbackModel>>(response);
 
-            return new ResponseModel<IQueryable<FeedbackModel>>
+            return new ResponseModel<IQueryable<Feedback>>
             {
-                Data = responsefeedbackModel,
+                Data = response,
                 MessageError = "",
                 StatusCode = StatusCodes.Status200OK
             };
         }
-        //Getby
+        
     }
 }

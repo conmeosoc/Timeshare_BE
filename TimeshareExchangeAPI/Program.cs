@@ -5,10 +5,15 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using System.Text.Json.Serialization;
 using TimeshareExchangeAPI.Entities;
+using TimeshareExchangeAPI.Globals;
 using TimeshareExchangeAPI.Repository.Generic;
 using TimeshareExchangeAPI.Service;
 using TimeshareExchangeAPI.Service.IService;
 
+
+//reading config
+GlobalFuns.ReadConfigSetting();
+//
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -82,11 +87,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddScoped<IGenericRepository<Account>, GenericRepository<Account>>();
 builder.Services.AddScoped<IGenericRepository<Timeshare>, GenericRepository<Timeshare>>();
 builder.Services.AddScoped<IGenericRepository<Realestate>, GenericRepository<Realestate>>();
+builder.Services.AddScoped<IGenericRepository<Feedback>, GenericRepository<Feedback>>();
 
 //Service
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<ITimeshareService, TimeshareService>();
 builder.Services.AddScoped<IRealestateService, RealestateService>();
+builder.Services.AddScoped<IFeedbackService, FeedbackService>();
 
 
 var app = builder.Build();

@@ -5,7 +5,6 @@ namespace TimeshareExchangeAPI.Entities;
 
 public partial class Feedback
 {
-    public string? PostId { get; set; }
 
     public string? MemberId { get; set; }
 

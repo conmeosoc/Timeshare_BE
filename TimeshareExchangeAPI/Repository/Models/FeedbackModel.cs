@@ -5,7 +5,6 @@ namespace TimeshareExchangeAPI.Repository.Models
     public class FeedbackModel
 
     {
-        public string? PostId { get; set; }
 
         public string? MemberId { get; set; }
 

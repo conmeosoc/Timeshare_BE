@@ -13,7 +13,7 @@ public partial class Realestate
 
     public string? Facility { get; set; }
 
-    public string? Feedback { get; set; }
+    public string? FeedbackId { get; set; }
 
     public byte[]? Photo { get; set; }
 

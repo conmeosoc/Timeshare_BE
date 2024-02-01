@@ -8,6 +8,7 @@ using System.Runtime;
 using System.Security.Claims;
 using System.Text;
 using TimeshareExchangeAPI.Entities;
+using TimeshareExchangeAPI.Globals;
 using TimeshareExchangeAPI.Repository.Generic;
 using TimeshareExchangeAPI.Repository.Models;
 using TimeshareExchangeAPI.Service.IService;
@@ -41,13 +42,7 @@ namespace TimeshareExchangeAPI.Service
             userEntity.Id = Guid.NewGuid().ToString();
             _accountRepository.Create(userEntity);
 
-            //var sendEmailModel = new SendMailModel()
-            //{
-            //    Content = "Code: " + userEntity.VerifyEmail,
-            //    ReceiveAddress = userEntity.userEmail,
-            //    Subject = "Verify Account",
-            //};
-            //_emailService.SendEmail(sendEmailModel);
+            
             return new ResponseModel<Account>
             {
                 Data = userEntity,
@@ -83,26 +78,48 @@ namespace TimeshareExchangeAPI.Service
         }
         public ResponseModel<Token> Signin(string username, string password)
         {
-
-            var AccountEntity = _accountRepository.GetSingle(x => x.Username == username && x.Password == password);
-            if(AccountEntity == null)
+            string username_admin = GlobalFuns.G_Config.AdminAccount.Username;
+            string pass_admin = GlobalFuns.G_Config.AdminAccount.Password;
+            if (username == username_admin && password == pass_admin)
             {
+                AdminAccount account = new AdminAccount();
+                account.Username = username;
+                account.Password = password;
+                var responseAccountModel = _mapper.Map<AccountModel>(account);
+                Token resToken = GenerateJSONWebToken(responseAccountModel);
+                resToken.Status = true;
+                resToken.Id = "1";
+                resToken.isAdmin = true;
+
                 return new ResponseModel<Token>
                 {
-                    MessageError = "Sai username hoac password",
-                    StatusCode = StatusCodes.Status404NotFound
+                    Data= resToken,
+                    MessageError = "Tai khoan tren la admin",
+                    StatusCode = StatusCodes.Status200OK
                 };
-
-            };                
-            var responseAccountModel = _mapper.Map<AccountModel>(AccountEntity);
-            Token resToken = GenerateJSONWebToken(responseAccountModel);
-            
-            return new ResponseModel<Token>
+            }
+            else
             {
-                Data = resToken,
-                MessageError = "",
-                StatusCode = StatusCodes.Status200OK
-            };
+                var AccountEntity = _accountRepository.GetSingle(x => x.Username == username && x.Password == password);
+                if (AccountEntity == null)
+                {
+                    return new ResponseModel<Token>
+                    {
+                        MessageError = "Sai username hoac password",
+                        StatusCode = StatusCodes.Status404NotFound
+                    };
+
+                };
+                var responseAccountModel = _mapper.Map<AccountModel>(AccountEntity);
+                Token resToken = GenerateJSONWebToken(responseAccountModel);
+
+                return new ResponseModel<Token>
+                {
+                    Data = resToken,
+                    MessageError = "",
+                    StatusCode = StatusCodes.Status200OK
+                };
+            }
         }
         private static Token GenerateJSONWebToken(AccountModel account)
         {
@@ -131,10 +148,6 @@ namespace TimeshareExchangeAPI.Service
                 TokenType = "jwt",
                 ExpiresIn = expires,
                 Id = account.Id,
-                FullName = account.FullName,
-                Address = account.Address,
-                Phone = account.Phone,
-                Sex = account.Sex,
                 Status = account.Status                
             };
             //
