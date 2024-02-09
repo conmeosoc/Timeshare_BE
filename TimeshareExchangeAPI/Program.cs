@@ -88,12 +88,14 @@ builder.Services.AddScoped<IGenericRepository<Account>, GenericRepository<Accoun
 builder.Services.AddScoped<IGenericRepository<Timeshare>, GenericRepository<Timeshare>>();
 builder.Services.AddScoped<IGenericRepository<Realestate>, GenericRepository<Realestate>>();
 builder.Services.AddScoped<IGenericRepository<Feedback>, GenericRepository<Feedback>>();
+builder.Services.AddScoped<IGenericRepository<Booking>, GenericRepository<Booking>>();
 
 //Service
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<ITimeshareService, TimeshareService>();
 builder.Services.AddScoped<IRealestateService, RealestateService>();
 builder.Services.AddScoped<IFeedbackService, FeedbackService>();
+builder.Services.AddScoped<IBookingService, BookingService>();
 
 
 var app = builder.Build();
