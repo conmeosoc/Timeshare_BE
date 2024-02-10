@@ -96,6 +96,7 @@ builder.Services.AddScoped<ITimeshareService, TimeshareService>();
 builder.Services.AddScoped<IRealestateService, RealestateService>();
 builder.Services.AddScoped<IFeedbackService, FeedbackService>();
 builder.Services.AddScoped<IBookingService, BookingService>();
+builder.Services.AddScoped<IVoucherService, VoucherService>();
 
 
 var app = builder.Build();
