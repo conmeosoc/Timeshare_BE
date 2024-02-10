@@ -89,6 +89,7 @@ builder.Services.AddScoped<IGenericRepository<Timeshare>, GenericRepository<Time
 builder.Services.AddScoped<IGenericRepository<Realestate>, GenericRepository<Realestate>>();
 builder.Services.AddScoped<IGenericRepository<Feedback>, GenericRepository<Feedback>>();
 builder.Services.AddScoped<IGenericRepository<Booking>, GenericRepository<Booking>>();
+builder.Services.AddScoped<IGenericRepository<Voucher>, GenericRepository<Voucher>>();
 
 //Service
 builder.Services.AddScoped<IAccountService, AccountService>();

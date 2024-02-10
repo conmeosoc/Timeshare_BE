@@ -252,7 +252,6 @@ public partial class TimeshareExchangeContext : DbContext
         modelBuilder.Entity<Voucher>(entity =>
         {
             entity
-                .HasNoKey()
                 .ToTable("Voucher");
 
             entity.Property(e => e.Amount).HasColumnName("amount");
@@ -269,7 +268,7 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("start_day");
             entity.Property(e => e.Status)
-                .HasColumnType("datetime")
+                .HasColumnType("boolean")
                 .HasColumnName("status");
             entity.Property(e => e.Type)
                 .HasMaxLength(50)

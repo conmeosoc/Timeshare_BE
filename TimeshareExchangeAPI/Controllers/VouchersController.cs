@@ -27,7 +27,7 @@ namespace TimeshareExchangeAPI.Controllers
     }
 
     [HttpPost]
-    [Route("api/[controller]/Createbooking")]
+    [Route("api/[controller]/Createvoucher")]
     public IActionResult AddBooking(Voucher booking)
     {
         var responseModel = _voucherService.CreateVoucher(booking);

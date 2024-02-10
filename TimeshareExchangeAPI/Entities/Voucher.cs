@@ -17,5 +17,5 @@ public partial class Voucher
 
     public DateTime? StartDay { get; set; }
 
-    public DateTime? Status { get; set; }
+    public Boolean? Status { get; set; }
 }

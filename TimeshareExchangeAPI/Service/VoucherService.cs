@@ -9,24 +9,21 @@ namespace TimeshareExchangeAPI.Service
     public class VoucherService : IVoucherService
     {
         private readonly IGenericRepository<Voucher> _voucherrepository;
-        private readonly IMapper _mapper;
 
-        public VoucherService(IGenericRepository<Voucher> repositoryBase, IMapper mapper)
+        public VoucherService(IGenericRepository<Voucher> repositoryBase)
         {
             _voucherrepository = repositoryBase;
-            _mapper = mapper;
 
         }
         public ResponseModel<Voucher> CreateVoucher(Voucher signUpModel)
         {
-            var userEntity = _mapper.Map<Voucher>(signUpModel);
 
-            userEntity.Id = Guid.NewGuid().ToString();
-            _voucherrepository.Create(userEntity);
+            signUpModel.Id = Guid.NewGuid().ToString();
+            _voucherrepository.Create(signUpModel);
 
             return new ResponseModel<Voucher>
             {
-                Data = userEntity,
+                Data = signUpModel,
                 MessageError = "",
                 StatusCode = StatusCodes.Status200OK
             };
@@ -35,10 +32,9 @@ namespace TimeshareExchangeAPI.Service
         public ResponseModel<List<Voucher>> GetAll()
         {
             var entities = _voucherrepository.GetAll().ToList();
-            var response = _mapper.Map<List<Voucher>>(entities.ToList());
             return new ResponseModel<List<Voucher>>
             {
-                Data = response,
+                Data = entities,
                 MessageError = "",
                 StatusCode = StatusCodes.Status200OK
             };
@@ -47,10 +43,9 @@ namespace TimeshareExchangeAPI.Service
         public ResponseModel<Voucher> GetSingle(string id)
         {
             var feedbackEntity = _voucherrepository.GetSingle(x => x.Id.Equals(id));
-            var responsefeedbackModel = _mapper.Map<Voucher>(feedbackEntity);
             return new ResponseModel<Voucher>
             {
-                Data = responsefeedbackModel,
+                Data = feedbackEntity,
                 MessageError = "",
                 StatusCode = StatusCodes.Status200OK
             };
