@@ -7,8 +7,8 @@ namespace TimeshareExchangeAPI.Service.IService
     {
         public ResponseModel<List<RealestateModel>> GetAll();
         public ResponseModel<IQueryable<Realestate>> GetRealestatebyname(string? id);
-
+        public ResponseModel CreateRealestate(IWebHostEnvironment webHostEnvironment, RealestateRequestModel requestProductModel);
         public ResponseModel<Realestate> GetSingle(string id);
-        public ResponseModel     UpdateRealestate(string id, TimeshareModel accountModel);
+        public ResponseModel UpdateRealestate(string id, RealestateRequestModel accountModel);
     }
 }

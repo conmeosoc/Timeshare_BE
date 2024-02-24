@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,13 +15,15 @@ namespace TimeshareExchangeAPI.Controllers
     [ApiController]
     public class RealestatesController : ControllerBase
     {
+        private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IRealestateService _realestateService;
 
-        public RealestatesController(IRealestateService realestateService)
+        public RealestatesController(IWebHostEnvironment webHostEnvironment, IRealestateService realestateService)
         {
+            _webHostEnvironment = webHostEnvironment;
             _realestateService = realestateService;
         }
-
+        
         // GET: api/Accounts
         [HttpGet]
         [Route("api/[controller]/GetAll")]
@@ -45,13 +48,17 @@ namespace TimeshareExchangeAPI.Controllers
         [HttpPut]
         [Route("api/[controller]/UpdateAccount")]
 
-        public async Task<IActionResult> PutTimeshare(string id, TimeshareModel timeshare)
+        public async Task<IActionResult> PutTimeshare(string id, RealestateRequestModel timeshare)
         {
             var responseModel = _realestateService.UpdateRealestate(id, timeshare);
             return Ok(responseModel);
         }
-
-        // POST: api/Accounts
+        [HttpPost]
+        [Route("API/[controller]/CreateRealestate")]
+        public async Task<IActionResult> PostTimeshare([FromForm] RealestateRequestModel requestProductModel)    {
+            var responseModel = _realestateService.CreateRealestate(_webHostEnvironment, requestProductModel);
+            return Ok(responseModel);
+        }
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 
         // DELETE: api/Accounts/5

@@ -15,7 +15,7 @@ public partial class Realestate
 
     public string? FeedbackId { get; set; }
 
-    public byte[]? Photo { get; set; }
+    public string? Photo { get; set; }
 
     public string? Status { get; set; }
 

@@ -72,6 +72,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
+                    RequireExpirationTime = false,
                     ValidateIssuer = false,
                     ValidateAudience = false,
                     RequireAudience = false,
@@ -113,7 +114,6 @@ var app = builder.Build();
 app.UseCors("corspolicy");
 
 app.UseHttpsRedirection();
-
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

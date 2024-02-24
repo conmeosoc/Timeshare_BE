@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using TimeshareExchangeAPI.Entities;
+using TimeshareExchangeAPI.Helper;
 using TimeshareExchangeAPI.Repository.Generic;
 using TimeshareExchangeAPI.Repository.Models;
 using TimeshareExchangeAPI.Service.IService;
@@ -18,7 +19,28 @@ namespace TimeshareExchangeAPI.Service
 
         }
 
-        
+        public ResponseModel CreateRealestate(IWebHostEnvironment webHostEnvironment, RealestateRequestModel requestProductModel)
+        {
+            var entity = _mapper.Map<Realestate>(requestProductModel);
+            if (entity == null)
+            {
+                return new ResponseModel
+                {
+                    MessageError = "Loi khong tao duoc san pham",
+                    StatusCode = StatusCodes.Status400BadRequest
+                };
+            }
+            entity.Id = Guid.NewGuid().ToString();
+            var imagePath = ImageHandler.UploadImageToFile(webHostEnvironment, requestProductModel.imageFiles, entity.Id);
+            entity.Photo = imagePath;
+            entity.Status = "1";
+            _timeshareRepository.Create(entity);
+            return new ResponseModel
+            {
+                MessageError = "",
+                StatusCode = StatusCodes.Status200OK
+            };
+        }
 
         //Get ALL
         public ResponseModel<List<RealestateModel>> GetAll()
@@ -58,7 +80,7 @@ namespace TimeshareExchangeAPI.Service
         }
 
         //Update
-        public ResponseModel UpdateRealestate(string id, TimeshareModel requestTimeshareModel)
+        public ResponseModel UpdateRealestate(string id, RealestateRequestModel requestTimeshareModel)
         {
             var Realestate = _timeshareRepository.GetSingle(x => id.Equals(x.Id));
             if (Realestate == null)
