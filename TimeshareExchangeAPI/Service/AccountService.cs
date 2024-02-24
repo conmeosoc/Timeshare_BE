@@ -123,7 +123,7 @@ namespace TimeshareExchangeAPI.Service
         }
         private static Token GenerateJSONWebToken(AccountModel account)
         {
-            DateTime expires = DateTime.Now.AddSeconds(60000);
+            DateTime expires = DateTime.Now.AddSeconds(6000000000);
             var securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJ0aGFvbmhtIiwiVXNlcm5hbWUiOiJKYXZhSW5Vc2UiLCJleHAiOjE3MDY1MTMyNzMsImlhdCI6MTcwNjUxMzI3M30.YWO4zbj19dDtiECHpJMXscZJJipmeKBlZjzCystgr_4\r\n"));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 

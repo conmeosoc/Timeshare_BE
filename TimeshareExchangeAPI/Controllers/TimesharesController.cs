@@ -37,7 +37,7 @@ namespace TimeshareExchangeAPI.Controllers
 
         public IActionResult GetTimesharebyID(string id)
         {
-            var responseModel = _timeshareService.GetSingle(id);
+            var responseModel = _timeshareService.GetTimeshareByRealestate(id);
             return Ok(responseModel);
         }
 

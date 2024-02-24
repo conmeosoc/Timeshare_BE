@@ -48,7 +48,7 @@ namespace TimeshareExchangeAPI.Service
         public ResponseModel<Realestate> GetSingle(string id)
         {
             var AccountEntity = _timeshareRepository.GetSingle(x => x.Id.Equals(id));
-            var responseAccountModel = _mapper.Map<TimeshareModel>(AccountEntity);
+            var responseAccountModel = _mapper.Map<RealestateModel>(AccountEntity);
             return new ResponseModel<Realestate>
             {
                 Data = AccountEntity,
