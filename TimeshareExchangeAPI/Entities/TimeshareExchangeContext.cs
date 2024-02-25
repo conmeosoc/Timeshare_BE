@@ -87,6 +87,9 @@ public partial class TimeshareExchangeContext : DbContext
             entity.Property(e => e.MemberId)
                 .HasMaxLength(50)
                 .HasColumnName("memberID");
+            entity.Property(e => e.Status)
+                .HasMaxLength(50)
+                .HasColumnName("status");
             entity.Property(e => e.Room).HasColumnName("room");
             entity.Property(e => e.StartDay)
                 .HasColumnType("datetime")
@@ -145,6 +148,9 @@ public partial class TimeshareExchangeContext : DbContext
             entity.Property(e => e.MemberId)
                 .HasMaxLength(50)
                 .HasColumnName("memberID");
+            entity.Property(e => e.RealestateId)
+                .HasMaxLength(50)
+                .HasColumnName("realestateID");
             
             entity.Property(e => e.Rate).HasColumnName("rate");
             entity.Property(e => e.Text)
@@ -210,7 +216,13 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasColumnName("photo");
             entity.Property(e => e.Status)
                 .HasMaxLength(50)
-                .HasColumnName("status");
+                .HasColumnName("status"); 
+            entity.Property(e => e.Description)
+                .HasMaxLength(50)
+                .HasColumnName("description");
+            entity.Property(e => e.Price)
+                .HasColumnType("decimal(18,0)")
+                .HasColumnName("price");
 
             entity.HasOne(d => d.FeedbackNavigation).WithMany(p => p.Realestates)
                 .HasForeignKey(d => d.FeedbackId)

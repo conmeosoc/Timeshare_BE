@@ -52,7 +52,14 @@ namespace TimeshareExchangeAPI.Controllers
             return Ok(responseModel);
         }
 
-        // POST: api/Accounts
+        // POST
+        [HttpPost]
+        [Route("api/[controller]/CreateTimeshare")]
+        public async Task<IActionResult> PostTimeshare(TimeshareModel timeshare)
+        {
+            var responseModel = _timeshareService.CreateTimeshare(timeshare);
+            return Ok(responseModel);
+        }
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 
         // DELETE: api/Accounts/5

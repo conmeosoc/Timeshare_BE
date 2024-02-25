@@ -45,14 +45,14 @@ namespace TimeshareExchangeAPI.Controllers
 
         // PUT: api/Accounts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut]
-        [Route("api/[controller]/UpdateAccount")]
+        //[HttpPut]
+        //[Route("api/[controller]/UpdateAccount")]
 
-        public async Task<IActionResult> PutTimeshare(string id, RealestateRequestModel timeshare)
-        {
-            var responseModel = _realestateService.UpdateRealestate(id, timeshare);
-            return Ok(responseModel);
-        }
+        //public async Task<IActionResult> PutTimeshare(string id, RealestateRequestModel timeshare)
+        //{
+        //    var responseModel = _realestateService.UpdateRealestate(id, timeshare);
+        //    return Ok(responseModel);
+        //}
         [HttpPost]
         [Route("API/[controller]/CreateRealestate")]
         public async Task<IActionResult> PostTimeshare([FromForm] RealestateRequestModel requestProductModel)    {

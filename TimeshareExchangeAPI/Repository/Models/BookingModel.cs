@@ -21,6 +21,7 @@
         public int? Children { get; set; }
 
         public int? Room { get; set; }
+        public string? Status { get; set; }
 
     }
 }

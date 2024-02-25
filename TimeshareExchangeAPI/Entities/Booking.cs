@@ -24,6 +24,7 @@ public partial class Booking
     public int? Children { get; set; }
 
     public int? Room { get; set; }
+    public string? Status { get; set; }
 
     public virtual Account? Member { get; set; }
 

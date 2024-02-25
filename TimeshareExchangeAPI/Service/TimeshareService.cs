@@ -76,7 +76,21 @@ namespace TimeshareExchangeAPI.Service
                 StatusCode = StatusCodes.Status200OK
             };
         }
+        //Create
+        public ResponseModel<Timeshare> CreateTimeshare(TimeshareModel signUpModel)
+        {
+            var userEntity = _mapper.Map<Timeshare>(signUpModel);
 
+            userEntity.Id = Guid.NewGuid().ToString();
+            _timeshareRepository.Create(userEntity);
+
+            return new ResponseModel<Timeshare>
+            {
+                Data = userEntity,
+                MessageError = "",
+                StatusCode = StatusCodes.Status200OK
+            };
+        }
 
 
     }
