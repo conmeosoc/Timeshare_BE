@@ -93,5 +93,24 @@ namespace TimeshareExchangeAPI.Service
         }
 
 
+        //Exchange Timeshare
+        public ResponseModel<Timeshare> ExchangeTimeshare(string id1, string id2)
+        {
+            var Timeshare1 = _timeshareRepository.GetSingle(x => id1.Equals(x.Id));
+            var Timeshare2 = _timeshareRepository.GetSingle(x => id2.Equals(x.Id));
+
+            Timeshare1.MemberId = Timeshare2.MemberId;
+            Timeshare2.MemberId = Timeshare1.MemberId;
+            _timeshareRepository.Update(Timeshare1);
+            _timeshareRepository.Update(Timeshare2);
+
+            return new ResponseModel<Timeshare>
+            {
+                MessageError =  "Success",
+                StatusCode = StatusCodes.Status200OK
+            };
+
+        }
+
     }
 }

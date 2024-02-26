@@ -8,6 +8,7 @@ namespace TimeshareExchangeAPI.Service.IService
         public ResponseModel<List<TimeshareModel>> GetAll();
         public ResponseModel<IQueryable<Timeshare>> GetTimeshareByRealestate(string? id);
         public ResponseModel<Timeshare> CreateTimeshare(TimeshareModel signUpModel);
+        public ResponseModel<Timeshare> ExchangeTimeshare(string id1, string id2);
 
         public ResponseModel<Timeshare> GetSingle(string id);
         public ResponseModel UpdateTimeshare(string id, TimeshareModel accountModel);
