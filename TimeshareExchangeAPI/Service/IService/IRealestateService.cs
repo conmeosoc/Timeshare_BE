@@ -9,6 +9,8 @@ namespace TimeshareExchangeAPI.Service.IService
         public ResponseModel<IQueryable<Realestate>> GetRealestatebyname(string? id);
         public ResponseModel CreateRealestate(IWebHostEnvironment webHostEnvironment, RealestateRequestModel requestProductModel);
         public ResponseModel<Realestate> GetSingle(string id);
+        public ResponseModel UpdateSta(String id, RealestateSta status);
+
         public ResponseModel UpdateRealestate(string id, RealestateRequestModel accountModel);
     }
 }

@@ -62,7 +62,13 @@ namespace TimeshareExchangeAPI.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 
         // DELETE: api/Accounts/5
-
+        [HttpPut]
+        [Route("API/[controller]/UpdateRealestateSta")]
+        public async Task<IActionResult> UpdateStatus(string id, RealestateSta status)
+        {
+            var responseModel = _realestateService.UpdateSta(id, status);
+            return Ok(responseModel);
+        }
 
     }
 }

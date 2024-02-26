@@ -31,4 +31,9 @@
 
     }
 
+    public class RealestateSta
+    {
+        public string? Status { get; set; }
+    }
+
 }
