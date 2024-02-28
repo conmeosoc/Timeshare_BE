@@ -10,11 +10,13 @@ namespace TimeshareExchangeAPI.Service
     public class RealestateService : IRealestateService
     {
         private readonly IGenericRepository<Realestate> _timeshareRepository;
+        private readonly IGenericRepository<Timeshare> _timeshare2Repository;
         private readonly IMapper _mapper;
 
-        public RealestateService(IGenericRepository<Realestate> repositoryBase, IMapper mapper)
+        public RealestateService(IGenericRepository<Realestate> repositoryBase, IGenericRepository<Timeshare> repositoryBase2, IMapper mapper)
         {
             _timeshareRepository = repositoryBase;
+            _timeshare2Repository = repositoryBase2;
             _mapper = mapper;
 
         }
@@ -47,6 +49,12 @@ namespace TimeshareExchangeAPI.Service
         public ResponseModel<List<RealestateModel>> GetAll()
         {
             var entities = _timeshareRepository.GetAll().ToList();
+            foreach (var entity in entities)
+            {
+                var timeshare = _timeshare2Repository.Get(x => x.RealestateId == entity.Id);
+                entity.Timeshares = timeshare.ToList();
+            }
+
             var response = _mapper.Map<List<RealestateModel>>(entities.ToList());
             return new ResponseModel<List<RealestateModel>>
             {

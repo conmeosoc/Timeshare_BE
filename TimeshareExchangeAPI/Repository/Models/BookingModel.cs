@@ -1,4 +1,6 @@
-﻿namespace TimeshareExchangeAPI.Repository.Models
+﻿using TimeshareExchangeAPI.Entities;
+
+namespace TimeshareExchangeAPI.Repository.Models
 {
     public class BookingModel
     {

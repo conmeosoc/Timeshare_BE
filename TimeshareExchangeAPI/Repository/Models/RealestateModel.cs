@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.Contracts;
+using TimeshareExchangeAPI.Entities;
 
 namespace TimeshareExchangeAPI.Repository.Models
 {
@@ -18,6 +19,8 @@ namespace TimeshareExchangeAPI.Repository.Models
         public string? Photo { get; set; }
         public double? Price { get; set; }
         public string? Status { get; set; }
+        public virtual ICollection<Timeshare> Timeshares { get; set; } = new List<Timeshare>();
+
     }
     public class RealestateRequestModel
     {
