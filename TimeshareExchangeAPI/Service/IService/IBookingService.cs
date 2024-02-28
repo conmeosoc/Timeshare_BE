@@ -6,8 +6,9 @@ namespace TimeshareExchangeAPI.Service.IService
     public interface IBookingService
     {
         public ResponseModel<List<BookingModel>> GetAll();
-        public ResponseModel<Booking> CreateBooking(BookingModel signUpModel);
+        public ResponseModel<Booking> CreateBooking(BookingRequestModel signUpModel);
         public ResponseModel<BookingModel> GetSingle(string id);
+        public ResponseModel<BookingModel> GetByMemberID(string id);
 
     }
 }

@@ -58,7 +58,7 @@ namespace TimeshareExchangeAPI.Service
         }
 
         //Update
-        public ResponseModel UpdateTimeshare(string id, TimeshareModel requestTimeshareModel)
+        public ResponseModel UpdateTimeshare(string id, TimeshareRequestModel requestTimeshareModel)
         {
             var Timeshare = _timeshareRepository.GetSingle(x => id.Equals(x.Id));
             if (Timeshare == null)
@@ -77,11 +77,12 @@ namespace TimeshareExchangeAPI.Service
             };
         }
         //Create
-        public ResponseModel<Timeshare> CreateTimeshare(TimeshareModel signUpModel)
+        public ResponseModel<Timeshare> CreateTimeshare(TimeshareRequestModel signUpModel)
         {
             var userEntity = _mapper.Map<Timeshare>(signUpModel);
 
             userEntity.Id = Guid.NewGuid().ToString();
+            userEntity.CreatedDay = DateTime.Now;
             _timeshareRepository.Create(userEntity);
 
             return new ResponseModel<Timeshare>
@@ -92,7 +93,18 @@ namespace TimeshareExchangeAPI.Service
             };
         }
 
-
+        //GetbymemberID
+        public ResponseModel<Timeshare> GetByMemberID(string id)
+        {
+            var AccountEntity = _timeshareRepository.GetSingle(x => x.MemberId.Equals(id));
+            var responseAccountModel = _mapper.Map<TimeshareModel>(AccountEntity);
+            return new ResponseModel<Timeshare>
+            {
+                Data = AccountEntity,
+                MessageError = "",
+                StatusCode = StatusCodes.Status200OK
+            };
+        }
         //Exchange Timeshare
         public ResponseModel<Timeshare> ExchangeTimeshare(string id1, string id2)
         {

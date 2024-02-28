@@ -9,5 +9,7 @@ namespace TimeshareExchangeAPI.Service.IService
         public ResponseModel<IQueryable<Feedback>> GetfeedbackbyMemberID(string? id);
         public ResponseModel<Feedback> CreateFeedback(FeedbackModel signUpModel);
         public ResponseModel<FeedbackModel> GetSingle(string id);
+        public ResponseModel<IQueryable<Feedback>> GetfeedbackbyrealestateID(string? id);
+
     }
 }

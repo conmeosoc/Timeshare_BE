@@ -40,13 +40,21 @@ namespace TimeshareExchangeAPI.Controllers
             var responseModel = _timeshareService.GetTimeshareByRealestate(id);
             return Ok(responseModel);
         }
+        [HttpGet]
+        [Route("api/[controller]/GetbyMemberID")]
+
+        public IActionResult GetTimesharebyMemberID(string id)
+        {
+            var responseModel = _timeshareService.GetByMemberID(id);
+            return Ok(responseModel);
+        }
 
         // PUT: api/Accounts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut]
         [Route("api/[controller]/UpdateTimeshare")]
 
-        public async Task<IActionResult> PutTimeshare(string id, TimeshareModel timeshare)
+        public async Task<IActionResult> PutTimeshare(string id, TimeshareRequestModel timeshare)
         {
             var responseModel = _timeshareService.UpdateTimeshare(id, timeshare);
             return Ok(responseModel);
@@ -55,7 +63,7 @@ namespace TimeshareExchangeAPI.Controllers
         // POST
         [HttpPost]
         [Route("api/[controller]/CreateTimeshare")]
-        public async Task<IActionResult> PostTimeshare(TimeshareModel timeshare)
+        public async Task<IActionResult> PostTimeshare(TimeshareRequestModel timeshare)
         {
             var responseModel = _timeshareService.CreateTimeshare(timeshare);
             return Ok(responseModel);

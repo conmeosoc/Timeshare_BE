@@ -67,6 +67,18 @@ namespace TimeshareExchangeAPI.Service
                 StatusCode = StatusCodes.Status200OK
             };
         }
+        //GetbyrealID
+        public ResponseModel<IQueryable<Feedback>> GetfeedbackbyrealestateID(string? id)
+        {
+            var response = _feedbackrepository.Get(x => x.RealestateId == id);
+
+            return new ResponseModel<IQueryable<Feedback>>
+            {
+                Data = response,
+                MessageError = "",
+                StatusCode = StatusCodes.Status200OK
+            };
+        }
         
     }
 }

@@ -31,14 +31,15 @@ namespace TimeshareExchangeAPI.Service
                 };
             }
             entity.Id = Guid.NewGuid().ToString();
-            var imagePath = ImageHandler.UploadImageToFile(webHostEnvironment, requestProductModel.imageFiles, entity.Id);
+            var imagePath = ImageHandler.UploadImagesToFile(webHostEnvironment, requestProductModel.imageFiles, entity.Id);
             entity.Photo = imagePath;
             entity.Status = "1";
+            entity.CreatedDate = DateTime.Now;
             _timeshareRepository.Create(entity);
             return new ResponseModel
             {
                 MessageError = "",
-                StatusCode = StatusCodes.Status200OK
+                StatusCode = StatusCodes.Status201Created
             };
         }
 
@@ -78,7 +79,8 @@ namespace TimeshareExchangeAPI.Service
                 StatusCode = StatusCodes.Status200OK
             };
         }
-
+        //getbymemberID
+      
         //Update
         public ResponseModel UpdateRealestate(string id, RealestateRequestModel requestTimeshareModel)
         {

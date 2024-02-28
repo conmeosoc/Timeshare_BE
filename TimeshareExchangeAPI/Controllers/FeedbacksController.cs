@@ -54,6 +54,14 @@ namespace TimeshareExchangeAPI.Controllers
             var responseModel = _feedService.GetfeedbackbyMemberID(id);
             return Ok(responseModel);
         }
+        [HttpGet]
+        [Route("api/[controller]/GetbyRealestateID")]
+
+        public async Task<IActionResult> GetbyrealestateID(string id)
+        {
+            var responseModel = _feedService.GetfeedbackbyrealestateID(id);
+            return Ok(responseModel);
+        }
 
 
         // POST: api/Accounts

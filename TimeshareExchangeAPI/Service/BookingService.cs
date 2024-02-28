@@ -17,10 +17,10 @@ namespace TimeshareExchangeAPI.Service
             _mapper = mapper;
 
         }
-        public ResponseModel<Booking> CreateBooking(BookingModel signUpModel)
+        public ResponseModel<Booking> CreateBooking(BookingRequestModel signUpModel)
         {
             var userEntity = _mapper.Map<Booking>(signUpModel);
-            
+            userEntity.CreatedDay = DateTime.Now;
             userEntity.Id = Guid.NewGuid().ToString();
             _feedbackrepository.Create(userEntity);
 
@@ -56,6 +56,17 @@ namespace TimeshareExchangeAPI.Service
             };
         }
         //GetbymemberID
+        public ResponseModel<BookingModel> GetByMemberID(string id)
+        {
+            var feedbackEntity = _feedbackrepository.GetSingle(x => x.MemberId.Equals(id));
+            var responsefeedbackModel = _mapper.Map<BookingModel>(feedbackEntity);
+            return new ResponseModel<BookingModel>
+            {
+                Data = responsefeedbackModel,
+                MessageError = "",
+                StatusCode = StatusCodes.Status200OK
+            };
+        }
 
     }
 }

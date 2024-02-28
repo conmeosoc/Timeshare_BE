@@ -21,6 +21,9 @@ namespace TimeshareExchangeAPI.Repository
            CreateMap<Feedback,FeedbackModel>().ReverseMap();
            CreateMap<Booking,BookingModel>().ReverseMap();
            CreateMap<Voucher,Vouchersta>().ReverseMap();
+           CreateMap<Booking, BookingRequestModel>().ReverseMap();
+           CreateMap<Timeshare, TimeshareRequestModel>().ReverseMap();
+
         }
 
     }

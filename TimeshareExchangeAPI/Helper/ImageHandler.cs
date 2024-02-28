@@ -31,6 +31,24 @@
             }
             return null;
         }
+        public static string UploadImagesToFile(IWebHostEnvironment webHostEnvironment, IFormFile[] formFiles, string uniqueID)
+        {
+            List<string> filePathName = new List<string>();
+            try
+            {
+                foreach (var formFile in formFiles)
+                {
+                    string imagePath = ImageHandler.UploadImageToFile(webHostEnvironment, formFile, uniqueID);
+                    filePathName.Add(imagePath);
+                }
+                // chỗ này foreach formFiles rồi gọi hàm UploadImageToFile
+            }
+            catch (Exception ex)
+            {
 
+                //throw ex;
+            }
+            return string.Join("'", filePathName,"'");
+        }
     }
 }

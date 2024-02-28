@@ -78,6 +78,9 @@ public partial class TimeshareExchangeContext : DbContext
             entity.Property(e => e.Adult).HasColumnName("adult");
             entity.Property(e => e.Amount).HasColumnName("amount");
             entity.Property(e => e.Children).HasColumnName("children");
+            entity.Property(e => e.CreatedDay)
+                .HasColumnType("datetime")
+                .HasColumnName("create_day");
             entity.Property(e => e.Deposit)
                 .HasColumnType("money")
                 .HasColumnName("deposit");
@@ -207,6 +210,9 @@ public partial class TimeshareExchangeContext : DbContext
             entity.Property(e => e.Location)
                 .HasMaxLength(50)
                 .HasColumnName("location");
+            entity.Property(e => e.MemberID)
+                .HasMaxLength(50)
+                .HasColumnName("memberId");
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
                 .HasColumnName("name");
@@ -218,12 +224,14 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("status"); 
             entity.Property(e => e.Description)
-                .HasMaxLength(50)
+                .HasMaxLength(50) 
                 .HasColumnName("description");
             entity.Property(e => e.Price)
                 .HasColumnType("decimal(18,0)")
                 .HasColumnName("price");
-
+            entity.Property(e => e.CreatedDate)
+                .HasColumnType("datetime")
+                .HasColumnName("create_day");
             entity.HasOne(d => d.FeedbackNavigation).WithMany(p => p.Realestates)
                 .HasForeignKey(d => d.FeedbackId)
                 .HasConstraintName("FK_Realestate_Feedback");
@@ -238,7 +246,10 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasColumnName("ID");
             entity.Property(e => e.EndDay)
                 .HasColumnType("datetime")
-                .HasColumnName("end_day");
+                .HasColumnName("end_day"); 
+            entity.Property(e => e.CreatedDay)
+                .HasColumnType("datetime")
+                .HasColumnName("create_day");
             entity.Property(e => e.MemberId)
                 .HasMaxLength(50)
                 .HasColumnName("memberID");

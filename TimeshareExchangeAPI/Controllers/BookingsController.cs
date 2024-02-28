@@ -28,7 +28,7 @@ namespace TimeshareExchangeAPI.Controllers
 
         [HttpPost]
         [Route("api/[controller]/Createbooking")]
-        public IActionResult AddBooking(BookingModel booking)
+        public IActionResult AddBooking(BookingRequestModel booking)
         {
             var responseModel = _bookService.CreateBooking(booking);
             return Ok(responseModel);
@@ -42,6 +42,14 @@ namespace TimeshareExchangeAPI.Controllers
         public IActionResult GetAccountbyID(string id)
         {
             var responseModel = _bookService.GetSingle(id);
+            return Ok(responseModel);
+        } 
+        [HttpGet]
+        [Route("api/[controller]/GetbyMemberID")]
+
+        public IActionResult GetbookingbyMemberID(string id)
+        {
+            var responseModel = _bookService.GetByMemberID(id);
             return Ok(responseModel);
         }
 

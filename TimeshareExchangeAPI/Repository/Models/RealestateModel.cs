@@ -1,11 +1,13 @@
-﻿namespace TimeshareExchangeAPI.Repository.Models
+﻿using System.Diagnostics.Contracts;
+
+namespace TimeshareExchangeAPI.Repository.Models
 {
     public class RealestateModel
     {
         public string Id { get; set; } = null!;
-
+        public string? memberID { get; set; }
         public string? Name { get; set; }
-
+        public DateTime create_day { get; set; }
         public string? Location { get; set; }
 
         public string? Facility { get; set; }
@@ -20,14 +22,14 @@
     public class RealestateRequestModel
     {
         public string? Name { get; set; }
-
+        public string? memberID { get; set; }
         public string? Location { get; set; }
         public string? Description { get; set; }
+        public DateTime create_day { get; set; }
 
         public string? Facility { get; set; }
-
         public double? Price { get; set; }
-        public IFormFile? imageFiles { get; set; }
+        public IFormFile[]? imageFiles { get; set; }
 
     }
 
