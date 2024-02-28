@@ -56,7 +56,7 @@ namespace TimeshareExchangeAPI.Service
                 StatusCode = StatusCodes.Status200OK
             };
         }
-
+        
         //Update
         public ResponseModel UpdateTimeshare(string id, TimeshareRequestModel requestTimeshareModel)
         {

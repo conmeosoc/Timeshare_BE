@@ -41,6 +41,14 @@ namespace TimeshareExchangeAPI.Controllers
         {
             var responseModel = _realestateService.GetSingle(id);
             return Ok(responseModel);
+        } 
+        [HttpGet]
+        [Route("api/[controller]/GetbyMemberID")]
+
+        public IActionResult GetRealestatebymemberID(string id)
+        {
+            var responseModel = _realestateService.GetBymemberID(id);
+            return Ok(responseModel);
         }
 
         // PUT: api/Accounts/5

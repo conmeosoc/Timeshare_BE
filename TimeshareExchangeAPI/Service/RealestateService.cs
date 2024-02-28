@@ -80,7 +80,18 @@ namespace TimeshareExchangeAPI.Service
             };
         }
         //getbymemberID
-      
+        public ResponseModel<Realestate> GetBymemberID(string id)
+        {
+            var AccountEntity = _timeshareRepository.GetSingle(x => x.MemberID.Equals(id));
+            var responseAccountModel = _mapper.Map<RealestateModel>(AccountEntity);
+            return new ResponseModel<Realestate>
+            {
+                Data = AccountEntity,
+                MessageError = "",
+                StatusCode = StatusCodes.Status200OK
+            };
+        }
+
         //Update
         public ResponseModel UpdateRealestate(string id, RealestateRequestModel requestTimeshareModel)
         {
