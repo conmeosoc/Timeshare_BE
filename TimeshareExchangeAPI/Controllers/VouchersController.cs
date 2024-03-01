@@ -44,6 +44,14 @@ namespace TimeshareExchangeAPI.Controllers
         var responseModel = _voucherService.GetSingle(id);
         return Ok(responseModel);
     }
+    [HttpGet]
+    [Route("api/[controller]/GetbyName")]
+
+    public IActionResult GetAccountbyname(string name)
+    {
+        var responseModel = _voucherService.Getbyname(name);
+        return Ok(responseModel);
+    }
         //Update voucher sta
     [HttpPut]
     [Route("api/[controller]/Updatevoucherstatus")]

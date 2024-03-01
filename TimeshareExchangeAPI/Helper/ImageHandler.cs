@@ -48,7 +48,7 @@
 
                 //throw ex;
             }
-            return string.Join("'", filePathName,"'");
+            return string.Join(",", filePathName);
         }
     }
 }

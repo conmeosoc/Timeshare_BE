@@ -7,6 +7,9 @@ namespace TimeshareExchangeAPI.Repository.Models
         public string Id { get; set; } = null!;
 
         public string? TimeshareId { get; set; }
+        public string? Phone { get; set; }
+        public string? FullName { get; set; }
+        public string? PaymentID { get; set; }
 
         public DateTime? StartDay { get; set; }
 
@@ -29,6 +32,10 @@ namespace TimeshareExchangeAPI.Repository.Models
     }
     public class BookingRequestModel
     {
+        public string? Phone { get; set; }
+        public string? FullName { get; set; }
+        public string? PaymentID { get; set; }
+
 
         public string? TimeshareId { get; set; }
 

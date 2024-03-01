@@ -8,6 +8,7 @@ namespace TimeshareExchangeAPI.Service.IService
         public ResponseModel<List<Voucher>> GetAll();
         public ResponseModel<Voucher> CreateVoucher(Voucher signUpModel);
         public ResponseModel<Voucher> Updatesta(string id, Vouchersta sta);
+        public ResponseModel<Voucher> Getbyname(string name);
 
         public ResponseModel<Voucher> GetSingle(string id);
     }

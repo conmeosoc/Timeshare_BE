@@ -76,6 +76,27 @@ namespace TimeshareExchangeAPI.Service
                 StatusCode = StatusCodes.Status200OK
             };
         }
+        //Update sta
+        public ResponseModel UpdateSta(String id, Timesharesta status)
+        {
+            var Timeshare = _timeshareRepository.GetSingle(x => id.Equals(x.Id));
+            if (Timeshare == null)
+            {
+                return new ResponseModel<Timeshare>
+                {
+                    MessageError = "Khong tim thay",
+                    StatusCode = StatusCodes.Status404NotFound
+                };
+            }
+            _mapper.Map(status, Timeshare);
+            Timeshare.Id = id;
+            _timeshareRepository.Update(Timeshare);
+            return new ResponseModel<Timeshare>
+            {
+                Data = Timeshare,
+                StatusCode = StatusCodes.Status200OK
+            };
+        }
         //Create
         public ResponseModel<Timeshare> CreateTimeshare(TimeshareRequestModel signUpModel)
         {
@@ -94,11 +115,11 @@ namespace TimeshareExchangeAPI.Service
         }
 
         //GetbymemberID
-        public ResponseModel<Timeshare> GetByMemberID(string id)
+        public ResponseModel<IQueryable<Timeshare>> GetByMemberID(string id)
         {
-            var AccountEntity = _timeshareRepository.GetSingle(x => x.MemberId.Equals(id));
-            var responseAccountModel = _mapper.Map<TimeshareModel>(AccountEntity);
-            return new ResponseModel<Timeshare>
+            var AccountEntity = _timeshareRepository.Get(x => x.MemberId.Equals(id));
+            var responseAccountModel = _mapper.Map<List<Timeshare>>(AccountEntity);
+            return new ResponseModel<IQueryable<Timeshare>>
             {
                 Data = AccountEntity,
                 MessageError = "",

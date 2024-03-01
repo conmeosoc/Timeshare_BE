@@ -53,6 +53,17 @@ namespace TimeshareExchangeAPI.Service
                 StatusCode = StatusCodes.Status200OK
             };
         }
+        //GetVoucherByName
+        public ResponseModel<Voucher> Getbyname(string name)
+        {
+            var feedbackEntity = _voucherrepository.GetSingle(x => x.Name.Equals(name));
+            return new ResponseModel<Voucher>
+            {
+                Data = feedbackEntity,
+                MessageError = "",
+                StatusCode = StatusCodes.Status200OK
+            };
+        }
         //Updatestatus
         public ResponseModel<Voucher> Updatesta(string id, Vouchersta voucher)
         {

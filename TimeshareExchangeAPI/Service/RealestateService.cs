@@ -88,11 +88,11 @@ namespace TimeshareExchangeAPI.Service
             };
         }
         //getbymemberID
-        public ResponseModel<Realestate> GetBymemberID(string id)
+        public ResponseModel<IQueryable<Realestate>> GetBymemberID(string id)
         {
-            var AccountEntity = _timeshareRepository.GetSingle(x => x.MemberID.Equals(id));
-            var responseAccountModel = _mapper.Map<RealestateModel>(AccountEntity);
-            return new ResponseModel<Realestate>
+            var AccountEntity = _timeshareRepository.Get(x => x.MemberID.Equals(id));
+            var responseAccountModel = _mapper.Map<List<RealestateModel>>(AccountEntity);
+            return new ResponseModel<IQueryable<Realestate>>()
             {
                 Data = AccountEntity,
                 MessageError = "",

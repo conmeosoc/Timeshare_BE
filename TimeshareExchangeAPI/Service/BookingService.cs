@@ -56,11 +56,12 @@ namespace TimeshareExchangeAPI.Service
             };
         }
         //GetbymemberID
-        public ResponseModel<BookingModel> GetByMemberID(string id)
+        public ResponseModel<List<BookingModel>> GetByMemberID(string id)
         {
-            var feedbackEntity = _feedbackrepository.GetSingle(x => x.MemberId.Equals(id));
-            var responsefeedbackModel = _mapper.Map<BookingModel>(feedbackEntity);
-            return new ResponseModel<BookingModel>
+            var feedbackEntity = _feedbackrepository.Get(x => x.MemberId.Equals(id));
+            
+            var responsefeedbackModel = _mapper.Map<List<BookingModel>>(feedbackEntity);
+            return new ResponseModel<List<BookingModel>>
             {
                 Data = responsefeedbackModel,
                 MessageError = "",

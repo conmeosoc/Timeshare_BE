@@ -35,9 +35,17 @@ namespace TimeshareExchangeAPI.Controllers
         [HttpGet]
         [Route("api/[controller]/GetbyRealestateID")]
 
-        public IActionResult GetTimesharebyID(string id)
+        public IActionResult GetTimesharebyRealestateID(string id)
         {
             var responseModel = _timeshareService.GetTimeshareByRealestate(id);
+            return Ok(responseModel);
+        }
+        [HttpGet]
+        [Route("api/[controller]/GetbyID")]
+
+        public IActionResult GetTimesharebyID(string id)
+        {
+            var responseModel = _timeshareService.GetSingle(id);
             return Ok(responseModel);
         }
         [HttpGet]
@@ -76,6 +84,13 @@ namespace TimeshareExchangeAPI.Controllers
         public async Task<IActionResult> ExchangeTimeshare(string id1, string id2)
         {
             var responseModel = _timeshareService.ExchangeTimeshare(id1, id2);
+            return Ok(responseModel);
+        }
+        [HttpPut]
+        [Route("api/[controller]/UpdateTimeshareSta")]
+        public async Task<IActionResult> Updatesta(string id, Timesharesta status)
+        {
+            var responseModel = _timeshareService.UpdateSta(id, status);
             return Ok(responseModel);
         }
     } 
