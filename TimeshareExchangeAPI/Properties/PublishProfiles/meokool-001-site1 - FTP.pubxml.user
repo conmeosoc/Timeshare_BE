@@ -7,6 +7,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword />
+<<<<<<< Updated upstream
+=======
+    <_PublishTargetUrl>ftp://win5251.site4now.net:21/site1</_PublishTargetUrl>
+    <History>False|2024-03-02T07:41:18.1470246Z;False|2024-02-28T20:13:49.1404808+07:00;False|2024-02-24T17:30:30.6732411+07:00;False|2024-02-10T16:58:33.0785257+07:00;False|2024-02-01T13:54:08.9528804+07:00;</History>
+    <LastFailureDetails />
+>>>>>>> Stashed changes
   </PropertyGroup>
   <ItemGroup>
     <DestinationConnectionStrings Include="TimeshareExchange">

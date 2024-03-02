@@ -11915,19 +11915,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Asus\\.nuget\\packages\\": {}
+    "C:\\Users\\minht\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Timeshare_BE\\TimeshareExchangeAPI\\TimeshareExchangeAPI.csproj",
+      "projectUniqueName": "D:\\SWP391\\TimeshareExchange\\TimeshareExchangeAPI\\TimeshareExchangeAPI\\TimeshareExchangeAPI.csproj",
       "projectName": "TimeshareExchangeAPI",
-      "projectPath": "D:\\Timeshare_BE\\TimeshareExchangeAPI\\TimeshareExchangeAPI.csproj",
-      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-      "outputPath": "D:\\Timeshare_BE\\TimeshareExchangeAPI\\obj\\",
+      "projectPath": "D:\\SWP391\\TimeshareExchange\\TimeshareExchangeAPI\\TimeshareExchangeAPI\\TimeshareExchangeAPI.csproj",
+      "packagesPath": "C:\\Users\\minht\\.nuget\\packages\\",
+      "outputPath": "D:\\SWP391\\TimeshareExchange\\TimeshareExchangeAPI\\TimeshareExchangeAPI\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\minht\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11935,6 +11940,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -12009,7 +12015,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

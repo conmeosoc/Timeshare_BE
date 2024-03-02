@@ -78,9 +78,15 @@ public partial class TimeshareExchangeContext : DbContext
             entity.Property(e => e.Adult).HasColumnName("adult");
             entity.Property(e => e.Amount).HasColumnName("amount");
             entity.Property(e => e.Children).HasColumnName("children");
+<<<<<<< Updated upstream
             entity.Property(e => e.Deposit)
                 .HasColumnType("money")
                 .HasColumnName("deposit");
+=======
+            entity.Property(e => e.CreatedDay)
+                .HasColumnType("datetime")
+                .HasColumnName("create_day");
+>>>>>>> Stashed changes
             entity.Property(e => e.EndDay)
                 .HasColumnType("datetime")
                 .HasColumnName("end_day");

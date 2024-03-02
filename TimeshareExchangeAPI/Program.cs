@@ -33,11 +33,26 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<IGenericRepository<Account>, GenericRepository<Account>>();
 builder.Services.AddScoped<IGenericRepository<Timeshare>, GenericRepository<Timeshare>>();
 builder.Services.AddScoped<IGenericRepository<Realestate>, GenericRepository<Realestate>>();
+<<<<<<< Updated upstream
+=======
+builder.Services.AddScoped<IGenericRepository<Feedback>, GenericRepository<Feedback>>();
+builder.Services.AddScoped<IGenericRepository<Booking>, GenericRepository<Booking>>();
+builder.Services.AddScoped<IGenericRepository<Voucher>, GenericRepository<Voucher>>();
+builder.Services.AddScoped<IGenericRepository<Exchange>, GenericRepository<Exchange>>();
+>>>>>>> Stashed changes
 
 //Service
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<ITimeshareService, TimeshareService>();
 builder.Services.AddScoped<IRealestateService, RealestateService>();
+<<<<<<< Updated upstream
+=======
+builder.Services.AddScoped<IFeedbackService, FeedbackService>();
+builder.Services.AddScoped<IBookingService, BookingService>();
+builder.Services.AddScoped<IVoucherService, VoucherService>();
+builder.Services.AddScoped<IExchangeService, ExchangeService>(); 
+
+>>>>>>> Stashed changes
 
 
 var app = builder.Build();
