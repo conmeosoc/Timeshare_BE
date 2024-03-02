@@ -4,18 +4,42 @@ namespace TimeshareExchangeAPI.Repository.Models
 {
     public class ExchangeModel
     {
-        public string? MemberId { get; set; }
+        public string ExchangeId { get; set; }
+        public string? MemberId1 { get; set; }
+        public string? MemberId2 { get; set; }
 
-        public string? TimeshareId { get; set; }
+        public string? TimeshareId1 { get; set; }
+        public string? TimeshareId2 { get; set; }
 
         public DateTime? StartDay { get; set; }
 
         public DateTime? EndDay { get; set; }
 
         public DateTime? ExchangeDay { get; set; }
+        public string? Status { get; set; }
 
-        public virtual Account? Member { get; set; }
+        
+    }
+    public class ExchangeRequestModel
+    {
+        public string? MemberId1 { get; set; }
+        public string? MemberId2 { get; set; }
 
-        public virtual Timeshare? Timeshare { get; set; }
+        public string? TimeshareId1 { get; set; }
+        public string? TimeshareId2 { get; set; }
+
+        public DateTime? StartDay { get; set; }
+
+        public DateTime? EndDay { get; set; }
+
+        public string? Status { get; set; }
+
+      
+    }
+
+    public class Exchangesta
+    {
+        public string? Status { get; set; }
+
     }
 }
