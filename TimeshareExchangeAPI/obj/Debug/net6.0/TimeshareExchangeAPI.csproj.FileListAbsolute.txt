@@ -12,6 +12,7 @@ D:\SWP391\TimeshareExchange\TimeshareExchangeAPI\TimeshareExchangeAPI\bin\Debug\
 D:\SWP391\TimeshareExchange\TimeshareExchangeAPI\TimeshareExchangeAPI\bin\Debug\net6.0\Humanizer.dll
 D:\SWP391\TimeshareExchange\TimeshareExchangeAPI\TimeshareExchangeAPI\bin\Debug\net6.0\MessagePack.dll
 D:\SWP391\TimeshareExchange\TimeshareExchangeAPI\TimeshareExchangeAPI\bin\Debug\net6.0\MessagePack.Annotations.dll
+D:\SWP391\TimeshareExchange\TimeshareExchangeAPI\TimeshareExchangeAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\SWP391\TimeshareExchange\TimeshareExchangeAPI\TimeshareExchangeAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Razor.Language.dll
 D:\SWP391\TimeshareExchange\TimeshareExchangeAPI\TimeshareExchangeAPI\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
 D:\SWP391\TimeshareExchange\TimeshareExchangeAPI\TimeshareExchangeAPI\bin\Debug\net6.0\Microsoft.Build.dll

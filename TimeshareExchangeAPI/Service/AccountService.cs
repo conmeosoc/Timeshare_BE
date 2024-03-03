@@ -1,6 +1,14 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Update;
+using Microsoft.IdentityModel.Tokens;
+using System.Configuration;
+using System.IdentityModel.Tokens.Jwt;
 using System.Runtime;
+using System.Security.Claims;
+using System.Text;
 using TimeshareExchangeAPI.Entities;
+using TimeshareExchangeAPI.Globals;
 using TimeshareExchangeAPI.Repository.Generic;
 using TimeshareExchangeAPI.Repository.Models;
 using TimeshareExchangeAPI.Service.IService;
@@ -9,6 +17,7 @@ namespace TimeshareExchangeAPI.Service
 {
     public class AccountService : IAccountService
     {
+
         private readonly IGenericRepository<Account> _accountRepository;
         private readonly IMapper _mapper;
 
@@ -18,13 +27,13 @@ namespace TimeshareExchangeAPI.Service
             _mapper = mapper;
 
         }
-        public ResponseModel SignUp(AccountRequestModel signUpModel)
+        public ResponseModel<Account> SignUp(AccountRequestModel signUpModel)
         {
             var userEntity = _mapper.Map<Account>(signUpModel);
             var existUserSignUp = _accountRepository.GetSingle(x => x.Username.Equals(signUpModel.Username));
             if (existUserSignUp != null)
             {
-                return new ResponseModel
+                return new ResponseModel<Account>
                 {
                     MessageError = "Username đã tồn tại",
                     StatusCode = StatusCodes.Status400BadRequest
@@ -33,14 +42,8 @@ namespace TimeshareExchangeAPI.Service
             userEntity.Id = Guid.NewGuid().ToString();
             _accountRepository.Create(userEntity);
 
-            //var sendEmailModel = new SendMailModel()
-            //{
-            //    Content = "Code: " + userEntity.VerifyEmail,
-            //    ReceiveAddress = userEntity.userEmail,
-            //    Subject = "Verify Account",
-            //};
-            //_emailService.SendEmail(sendEmailModel);
-            return new ResponseModel
+            
+            return new ResponseModel<Account>
             {
                 Data = userEntity,
                 MessageError = "",
@@ -48,24 +51,12 @@ namespace TimeshareExchangeAPI.Service
             };
         }
 
-
         //Get ALL
-        public ResponseModel GetAll()
+        public ResponseModel<List<AccountModel>> GetAll()
         {
             var entities = _accountRepository.GetAll().ToList();
             var response = _mapper.Map<List<AccountModel>>(entities.ToList());
-            return new ResponseModel
-            {
-                Data = response,
-                MessageError = "",
-                StatusCode = StatusCodes.Status200OK
-            };
-        }
-
-        public ResponseModel GetAccountByName(string? name)
-        {
-            var response = _accountRepository.Get(x => x.FullName == name);
-            return new ResponseModel
+            return new ResponseModel<List<AccountModel>>
             {
                 Data = response,
                 MessageError = "",
@@ -78,14 +69,90 @@ namespace TimeshareExchangeAPI.Service
         {
             var AccountEntity = _accountRepository.GetSingle(x => x.Id.Equals(id));
             var responseAccountModel = _mapper.Map<AccountModel>(AccountEntity);
-            return new ResponseModel
+            return new ResponseModel<Account>
             {
                 Data = AccountEntity,
                 MessageError = "",
                 StatusCode = StatusCodes.Status200OK
             };
         }
+        public ResponseModel<Token> Signin(string username, string password)
+        {
+            string username_admin = GlobalFuns.G_Config.AdminAccount.Username;
+            string pass_admin = GlobalFuns.G_Config.AdminAccount.Password;
+            if (username == username_admin && password == pass_admin)
+            {
+                AdminAccount account = new AdminAccount();
+                account.Username = username;
+                account.Password = password;
+                var responseAccountModel = _mapper.Map<AccountModel>(account);
+                Token resToken = GenerateJSONWebToken(responseAccountModel);
+                resToken.Status = true;
+                resToken.Id = "1";
+                resToken.isAdmin = true;
 
+                return new ResponseModel<Token>
+                {
+                    Data= resToken,
+                    MessageError = "Tai khoan tren la admin",
+                    StatusCode = StatusCodes.Status200OK
+                };
+            }
+            else
+            {
+                var AccountEntity = _accountRepository.GetSingle(x => x.Username == username && x.Password == password);
+                if (AccountEntity == null)
+                {
+                    return new ResponseModel<Token>
+                    {
+                        MessageError = "Sai username hoac password",
+                        StatusCode = StatusCodes.Status404NotFound
+                    };
+
+                };
+                var responseAccountModel = _mapper.Map<AccountModel>(AccountEntity);
+                Token resToken = GenerateJSONWebToken(responseAccountModel);
+
+                return new ResponseModel<Token>
+                {
+                    Data = resToken,
+                    MessageError = "",
+                    StatusCode = StatusCodes.Status200OK
+                };
+            }
+        }
+        private static Token GenerateJSONWebToken(AccountModel account)
+        {
+            DateTime expires = DateTime.Now.AddSeconds(6000000000);
+            var securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJ0aGFvbmhtIiwiVXNlcm5hbWUiOiJKYXZhSW5Vc2UiLCJleHAiOjE3MDY1MTMyNzMsImlhdCI6MTcwNjUxMzI3M30.YWO4zbj19dDtiECHpJMXscZJJipmeKBlZjzCystgr_4\r\n"));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            var claims = new[]
+            {
+        new Claim(JwtRegisteredClaimNames.Name, account.Username),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+    };
+            //
+            var token = new JwtSecurityToken(
+                issuer: account.Username,
+                audience: account.FullName,
+                claims,
+                expires: expires,
+                signingCredentials: credentials);
+            //
+            var encodetoken = new JwtSecurityTokenHandler().WriteToken(token);
+            //
+            Token tokenres = new Token()
+            {
+                AccessToken = encodetoken,
+                TokenType = "jwt",
+                ExpiresIn = expires,
+                Id = account.Id,
+                Status = account.Status                
+            };
+            //
+            return tokenres;
+        }
         //Update
         public ResponseModel UpdateAccount(string id, AccountRequestModel requestAccountModel)
         {
@@ -101,7 +168,7 @@ namespace TimeshareExchangeAPI.Service
             _mapper.Map(requestAccountModel, Account);
             Account.Id = id;
             _accountRepository.Update(Account);
-            return new ResponseModel
+            return new ResponseModel<Account>
             {
                 Data = Account,
                 StatusCode = StatusCodes.Status200OK
@@ -121,13 +188,30 @@ namespace TimeshareExchangeAPI.Service
             _mapper.Map(account, Account);
             Account.Id = id;
             _accountRepository.Update(Account);
-            return new ResponseModel
-            {
+            return new ResponseModel<Account> { 
                 Data = Account,
                 StatusCode = StatusCodes.Status200OK
             };
         }
-
+        //Delete
+        public ResponseModel DeleteAccount(string id)
+        {
+            var Account = _accountRepository.GetSingle(x => id.Equals(x.Id));
+            if (Account == null)
+            {
+                return new ResponseModel
+                {
+                    MessageError = "Khong tim thay",
+                    StatusCode = StatusCodes.Status404NotFound
+                };
+            }
+            _accountRepository.Delete(Account);
+            return new ResponseModel<Account>
+            {
+                MessageError = "Xoa thanh cong",
+                StatusCode = StatusCodes.Status200OK
+            };
+        }
 
     }
 }

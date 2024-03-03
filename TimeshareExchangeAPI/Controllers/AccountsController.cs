@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ using TimeshareExchangeAPI.Service.IService;
 
 namespace TimeshareExchangeAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     public class AccountsController : ControllerBase
     {
@@ -21,11 +23,20 @@ namespace TimeshareExchangeAPI.Controllers
         {
             _accountService = accountService;
         }
+        [AllowAnonymous]
         [HttpPost]
         [Route("api/[controller]/SignUpUser")]
         public IActionResult CreateUser(AccountRequestModel signUpModel)
         {
             var responseModel =  _accountService.SignUp(signUpModel);
+            return Ok(responseModel);
+        }
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("api/[controller]/Signin")]
+        public IActionResult Signin(string username, string password)
+        {
+            var responseModel = _accountService.Signin(username, password);
             return Ok(responseModel);
         }
 
@@ -57,6 +68,14 @@ namespace TimeshareExchangeAPI.Controllers
         public async Task<IActionResult> PutAccount(string id, AccountRequestModel account)
         {
             var responseModel = _accountService.UpdateAccount(id, account);
+            return Ok(responseModel);
+        }
+        [HttpDelete]
+        [Route("api/[controller]/DeleteAccount")]
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            var responseModel = _accountService.DeleteAccount(id);
             return Ok(responseModel);
         }
 

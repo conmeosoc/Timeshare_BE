@@ -294,3 +294,4 @@ D:\SWP391\TimeshareExchange\TimeshareExchangeAPI\TimeshareExchangeAPI\obj\Releas
 D:\SWP391\TimeshareExchange\TimeshareExchangeAPI\TimeshareExchangeAPI\obj\Release\net6.0\TimeshareExchangeAPI.pdb
 D:\SWP391\TimeshareExchange\TimeshareExchangeAPI\TimeshareExchangeAPI\obj\Release\net6.0\TimeshareExchangeAPI.genruntimeconfig.cache
 D:\SWP391\TimeshareExchange\TimeshareExchangeAPI\TimeshareExchangeAPI\obj\Release\net6.0\ref\TimeshareExchangeAPI.dll
+D:\SWP391\TimeshareExchange\TimeshareExchangeAPI\TimeshareExchangeAPI\bin\Release\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

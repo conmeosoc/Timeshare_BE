@@ -4,6 +4,10 @@
     {
         public string? MessageError { get; set; }
         public int StatusCode { get; set; }
-        public object? Data { get; set; }
+    }
+    public class ResponseModel<T> : ResponseModel
+    {
+        public T Data { get; set; }
+        
     }
 }

@@ -10,11 +10,11 @@ public partial class Timeshare
     public string? RealestateId { get; set; }
 
     public string? MemberId { get; set; }
-
+    public DateTime? CreatedDay { get; set; }
     public DateTime? StartDay { get; set; }
 
     public DateTime? EndDay { get; set; }
-
+    public double Price { get; set; }
     public string? Status { get; set; }
 
     public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();

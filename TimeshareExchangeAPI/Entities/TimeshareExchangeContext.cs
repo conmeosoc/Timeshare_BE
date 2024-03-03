@@ -78,21 +78,28 @@ public partial class TimeshareExchangeContext : DbContext
             entity.Property(e => e.Adult).HasColumnName("adult");
             entity.Property(e => e.Amount).HasColumnName("amount");
             entity.Property(e => e.Children).HasColumnName("children");
-<<<<<<< Updated upstream
-            entity.Property(e => e.Deposit)
-                .HasColumnType("money")
-                .HasColumnName("deposit");
-=======
             entity.Property(e => e.CreatedDay)
                 .HasColumnType("datetime")
                 .HasColumnName("create_day");
->>>>>>> Stashed changes
+           
             entity.Property(e => e.EndDay)
                 .HasColumnType("datetime")
                 .HasColumnName("end_day");
             entity.Property(e => e.MemberId)
                 .HasMaxLength(50)
                 .HasColumnName("memberID");
+            entity.Property(e => e.Phone)
+                .HasMaxLength(50)
+                .HasColumnName("phone");
+            entity.Property(e => e.FullName)
+                .HasMaxLength(50)
+                .HasColumnName("fullName");
+            entity.Property(e => e.PaymentID)
+                .HasMaxLength(50)
+                .HasColumnName("paymentID");
+            entity.Property(e => e.Status)
+                .HasMaxLength(50)
+                .HasColumnName("status");
             entity.Property(e => e.Room).HasColumnName("room");
             entity.Property(e => e.StartDay)
                 .HasColumnType("datetime")
@@ -113,31 +120,44 @@ public partial class TimeshareExchangeContext : DbContext
         modelBuilder.Entity<Exchange>(entity =>
         {
             entity
-                .HasNoKey()
                 .ToTable("Exchange");
-
+            entity.Property(e => e.ExchangeId)
+                .HasMaxLength(50)
+                .HasColumnName("Id");
             entity.Property(e => e.EndDay)
                 .HasColumnType("datetime")
                 .HasColumnName("end_day");
             entity.Property(e => e.ExchangeDay)
                 .HasColumnType("datetime")
                 .HasColumnName("exchange_day");
-            entity.Property(e => e.MemberId)
+            entity.Property(e => e.MemberId1)
                 .HasMaxLength(50)
-                .HasColumnName("memberID");
+                .HasColumnName("memberID1");
+            entity.Property(e => e.MemberId2)
+                .HasMaxLength(50)
+                .HasColumnName("memberID2");
             entity.Property(e => e.StartDay)
                 .HasColumnType("datetime")
                 .HasColumnName("start_day");
-            entity.Property(e => e.TimeshareId)
+            entity.Property(e => e.TimeshareId1)
                 .HasMaxLength(50)
-                .HasColumnName("timeshareID");
+                .HasColumnName("timeshareID1");
+            entity.Property(e => e.TimeshareId2)
+                .HasMaxLength(50)
+                .HasColumnName("timeshareID2");
 
             entity.HasOne(d => d.Member).WithMany()
-                .HasForeignKey(d => d.MemberId)
+                .HasForeignKey(d => d.MemberId1)
+                .HasConstraintName("FK_Exchange_Account");
+            entity.HasOne(d => d.Member).WithMany()
+                .HasForeignKey(d => d.MemberId2)
                 .HasConstraintName("FK_Exchange_Account");
 
             entity.HasOne(d => d.Timeshare).WithMany()
-                .HasForeignKey(d => d.TimeshareId)
+                .HasForeignKey(d => d.TimeshareId1)
+                .HasConstraintName("FK_Exchange_Timeshare");
+            entity.HasOne(d => d.Timeshare).WithMany()
+                .HasForeignKey(d => d.TimeshareId2)
                 .HasConstraintName("FK_Exchange_Timeshare");
         });
 
@@ -151,9 +171,10 @@ public partial class TimeshareExchangeContext : DbContext
             entity.Property(e => e.MemberId)
                 .HasMaxLength(50)
                 .HasColumnName("memberID");
-            entity.Property(e => e.PostId)
+            entity.Property(e => e.RealestateId)
                 .HasMaxLength(50)
-                .HasColumnName("postID");
+                .HasColumnName("realestateID");
+            
             entity.Property(e => e.Rate).HasColumnName("rate");
             entity.Property(e => e.Text)
                 .HasMaxLength(50)
@@ -203,12 +224,15 @@ public partial class TimeshareExchangeContext : DbContext
             entity.Property(e => e.Facility)
                 .HasMaxLength(50)
                 .HasColumnName("facility");
-            entity.Property(e => e.Feedback)
+            entity.Property(e => e.FeedbackId)
                 .HasMaxLength(50)
-                .HasColumnName("feedback");
+                .HasColumnName("feedbackId");
             entity.Property(e => e.Location)
                 .HasMaxLength(50)
                 .HasColumnName("location");
+            entity.Property(e => e.MemberID)
+                .HasMaxLength(50)
+                .HasColumnName("memberId");
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
                 .HasColumnName("name");
@@ -218,10 +242,18 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasColumnName("photo");
             entity.Property(e => e.Status)
                 .HasMaxLength(50)
-                .HasColumnName("status");
-
+                .HasColumnName("status"); 
+            entity.Property(e => e.Description)
+                .HasMaxLength(500) 
+                .HasColumnName("description");
+            entity.Property(e => e.Price)
+                .HasColumnType("decimal(18,0)")
+                .HasColumnName("price");
+            entity.Property(e => e.CreatedDate)
+                .HasColumnType("datetime")
+                .HasColumnName("create_day");
             entity.HasOne(d => d.FeedbackNavigation).WithMany(p => p.Realestates)
-                .HasForeignKey(d => d.Feedback)
+                .HasForeignKey(d => d.FeedbackId)
                 .HasConstraintName("FK_Realestate_Feedback");
         });
 
@@ -232,9 +264,15 @@ public partial class TimeshareExchangeContext : DbContext
             entity.Property(e => e.Id)
                 .HasMaxLength(50)
                 .HasColumnName("ID");
+            entity.Property(e => e.Price)
+               .HasColumnType("decimal(18,0)")
+               .HasColumnName("price");
             entity.Property(e => e.EndDay)
                 .HasColumnType("datetime")
-                .HasColumnName("end_day");
+                .HasColumnName("end_day"); 
+            entity.Property(e => e.CreatedDay)
+                .HasColumnType("datetime")
+                .HasColumnName("create_day");
             entity.Property(e => e.MemberId)
                 .HasMaxLength(50)
                 .HasColumnName("memberID");
@@ -260,7 +298,6 @@ public partial class TimeshareExchangeContext : DbContext
         modelBuilder.Entity<Voucher>(entity =>
         {
             entity
-                .HasNoKey()
                 .ToTable("Voucher");
 
             entity.Property(e => e.Amount).HasColumnName("amount");
@@ -277,7 +314,7 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("start_day");
             entity.Property(e => e.Status)
-                .HasColumnType("datetime")
+                .HasColumnType("boolean")
                 .HasColumnName("status");
             entity.Property(e => e.Type)
                 .HasMaxLength(50)

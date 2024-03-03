@@ -35,28 +35,63 @@ namespace TimeshareExchangeAPI.Controllers
         [HttpGet]
         [Route("api/[controller]/GetbyRealestateID")]
 
+        public IActionResult GetTimesharebyRealestateID(string id)
+        {
+            var responseModel = _timeshareService.GetTimeshareByRealestate(id);
+            return Ok(responseModel);
+        }
+        [HttpGet]
+        [Route("api/[controller]/GetbyID")]
+
         public IActionResult GetTimesharebyID(string id)
         {
             var responseModel = _timeshareService.GetSingle(id);
+            return Ok(responseModel);
+        }
+        [HttpGet]
+        [Route("api/[controller]/GetbyMemberID")]
+
+        public IActionResult GetTimesharebyMemberID(string id)
+        {
+            var responseModel = _timeshareService.GetByMemberID(id);
             return Ok(responseModel);
         }
 
         // PUT: api/Accounts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut]
-        [Route("api/[controller]/UpdateAccount")]
+        [Route("api/[controller]/UpdateTimeshare")]
 
-        public async Task<IActionResult> PutTimeshare(string id, TimeshareModel timeshare)
+        public async Task<IActionResult> PutTimeshare(string id, TimeshareRequestModel timeshare)
         {
             var responseModel = _timeshareService.UpdateTimeshare(id, timeshare);
             return Ok(responseModel);
         }
 
-        // POST: api/Accounts
+        // POST
+        [HttpPost]
+        [Route("api/[controller]/CreateTimeshare")]
+        public async Task<IActionResult> PostTimeshare(TimeshareRequestModel timeshare)
+        {
+            var responseModel = _timeshareService.CreateTimeshare(timeshare);
+            return Ok(responseModel);
+        }
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 
         // DELETE: api/Accounts/5
-
-
+        [HttpPut]
+        [Route("api/[controller]/ExchangeTimeshare")]
+        public async Task<IActionResult> ExchangeTimeshare(string id1, string id2)
+        {
+            var responseModel = _timeshareService.ExchangeTimeshare(id1, id2);
+            return Ok(responseModel);
+        }
+        [HttpPut]
+        [Route("api/[controller]/UpdateTimeshareSta")]
+        public async Task<IActionResult> Updatesta(string id, Timesharesta status)
+        {
+            var responseModel = _timeshareService.UpdateSta(id, status);
+            return Ok(responseModel);
+        }
     } 
     }

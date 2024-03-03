@@ -1,10 +1,21 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
+using System.Text;
 using System.Text.Json.Serialization;
 using TimeshareExchangeAPI.Entities;
+using TimeshareExchangeAPI.Globals;
 using TimeshareExchangeAPI.Repository.Generic;
 using TimeshareExchangeAPI.Service;
 using TimeshareExchangeAPI.Service.IService;
 
+
+//reading config
+GlobalFuns.ReadConfigSetting();
+//
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,7 +25,36 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDirectoryBrowser();
 
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "TimeshareAPI",
+        Description = "An ASP.NET Core Web API .NET 6",
+    });
+
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Name = "Authorization",
+        Description = "Bearer Authentication with JWT Token",
+        Type = SecuritySchemeType.Http
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement {
+        {
+            new OpenApiSecurityScheme {
+                Reference = new OpenApiReference {
+                    Id = "Bearer",
+                        Type = ReferenceType.SecurityScheme
+                }
+            },
+            new List < string > ()
+        }
+    });
+});
 builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
@@ -28,31 +68,42 @@ builder.Services.AddCors(opts =>
 builder.Services.AddDbContext<TimeshareExchangeContext>(options =>
            options.UseSqlServer(builder.Configuration.GetConnectionString("TimeshareExchange")));
 builder.Services.AddAutoMapper(typeof(Program));
+//jwt
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    RequireExpirationTime = false,
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    RequireAudience = false,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ClockSkew = TimeSpan.Zero,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJ0aGFvbmhtIiwiVXNlcm5hbWUiOiJKYXZhSW5Vc2UiLCJleHAiOjE3MDY1MTMyNzMsImlhdCI6MTcwNjUxMzI3M30.YWO4zbj19dDtiECHpJMXscZJJipmeKBlZjzCystgr_4\r\n"))
+                };
+            });
+
 
 //Repository
 builder.Services.AddScoped<IGenericRepository<Account>, GenericRepository<Account>>();
 builder.Services.AddScoped<IGenericRepository<Timeshare>, GenericRepository<Timeshare>>();
 builder.Services.AddScoped<IGenericRepository<Realestate>, GenericRepository<Realestate>>();
-<<<<<<< Updated upstream
-=======
 builder.Services.AddScoped<IGenericRepository<Feedback>, GenericRepository<Feedback>>();
 builder.Services.AddScoped<IGenericRepository<Booking>, GenericRepository<Booking>>();
 builder.Services.AddScoped<IGenericRepository<Voucher>, GenericRepository<Voucher>>();
 builder.Services.AddScoped<IGenericRepository<Exchange>, GenericRepository<Exchange>>();
->>>>>>> Stashed changes
 
 //Service
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<ITimeshareService, TimeshareService>();
 builder.Services.AddScoped<IRealestateService, RealestateService>();
-<<<<<<< Updated upstream
-=======
 builder.Services.AddScoped<IFeedbackService, FeedbackService>();
 builder.Services.AddScoped<IBookingService, BookingService>();
 builder.Services.AddScoped<IVoucherService, VoucherService>();
-builder.Services.AddScoped<IExchangeService, ExchangeService>(); 
+builder.Services.AddScoped<IExchangeService, ExchangeService>();
 
->>>>>>> Stashed changes
 
 
 var app = builder.Build();
@@ -68,9 +119,14 @@ var app = builder.Build();
 app.UseCors("corspolicy");
 
 app.UseHttpsRedirection();
-
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+           Path.Combine(builder.Environment.ContentRootPath, "Uploads")),
+    RequestPath = "/Uploads"
+});
+app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 app.Run();
 
