@@ -33,10 +33,7 @@ namespace TimeshareExchangeAPI.Service
             };
         }
 
-        public ResponseModel<List<PaymentModel>> GetByMemberID(string id)
-        {
-            throw new NotImplementedException();
-        }
+
 
 
 
@@ -53,9 +50,17 @@ namespace TimeshareExchangeAPI.Service
             };
         }
 
-        ResponseModel<PaymentModel> IPaymentService.GetSingle(string id)
+        public ResponseModel<List<PaymentModel>> GetByMemberID(string id)
         {
-            throw new NotImplementedException();
+            var feedbackEntity = _paymentRepository.Get(x => x.MemberId.Equals(id));
+
+            var responsefeedbackModel = _mapper.Map<List<PaymentModel>>(feedbackEntity);
+            return new ResponseModel<List<PaymentModel>>
+            {
+                Data = responsefeedbackModel,
+                MessageError = "",
+                StatusCode = StatusCodes.Status200OK
+            };
         }
     }
 

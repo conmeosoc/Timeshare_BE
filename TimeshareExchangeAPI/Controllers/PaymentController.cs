@@ -25,6 +25,14 @@ namespace TimeshareExchangeAPI.Controllers
             return Ok(responseModel);
         }
 
+        [HttpGet]
+        [Route("api/[controller]/GetbyMemberID")]
+
+        public IActionResult GetbyMemberID(string id)
+        {
+            var responseModel = _paymentService.GetByMemberID(id);
+            return Ok(responseModel);
+        }
 
     }
 }

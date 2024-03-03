@@ -1,4 +1,5 @@
-﻿using TimeshareExchangeAPI.Repository.Models;
+﻿using TimeshareExchangeAPI.Entities;
+using TimeshareExchangeAPI.Repository.Models;
 
 namespace TimeshareExchangeAPI.Service.IService
 {
@@ -7,7 +8,7 @@ namespace TimeshareExchangeAPI.Service.IService
     {
         public ResponseModel<List<PaymentModel>> GetAll();
 
-        public ResponseModel<PaymentModel> GetSingle(string id);
+        public ResponseModel<Payment> GetSingle(string id);
 
         public ResponseModel<List<PaymentModel>> GetByMemberID(string id);
     }

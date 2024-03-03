@@ -296,7 +296,7 @@ public partial class TimeshareExchangeContext : DbContext
 
         modelBuilder.Entity<Payment>(entity =>
         {
-       
+            entity.HasKey(p => p.PayId);
 
             entity.ToTable("Payments");
 
@@ -314,7 +314,7 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasColumnName("MemberId");
             entity.Property(e => e.Money)
                 .HasColumnType("decimal(20,2)")
-                .HasColumnName("money");
+                .HasColumnName("Amount");
             entity.Property(e => e.Status)
                 .HasMaxLength(50)
                 .HasColumnName("Status");
