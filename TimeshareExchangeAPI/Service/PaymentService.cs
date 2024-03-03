@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Newtonsoft.Json.Linq;
 using TimeshareExchangeAPI.Entities;
 using TimeshareExchangeAPI.Repository.Generic;
 using TimeshareExchangeAPI.Repository.Models;
@@ -62,9 +63,43 @@ namespace TimeshareExchangeAPI.Service
                 StatusCode = StatusCodes.Status200OK
             };
         }
+
+
+        /*   public ResponseModel<Payment> Createpayment(PaymentModel paymentModel
+               )
+           {
+               var userEntity = _mapper.Map<Payment>(paymentModel);
+
+               userEntity.PayId = Guid.NewGuid().ToString();
+               _paymentRepository.Create(userEntity);
+
+               return new ResponseModel<Payment>
+               {
+                   Data = userEntity,
+                   MessageError = "",
+                   StatusCode = StatusCodes.Status200OK
+               };
+           }*/
+        public ResponseModel<Payment> CreatePayment(PaymentModel paymentModel)
+        {
+            var userEntity = _mapper.Map<Payment>(paymentModel);
+
+            userEntity.PayId = Guid.NewGuid().ToString();
+            _paymentRepository.Create(userEntity);
+
+            return new ResponseModel<Payment>
+            {
+                Data = userEntity,
+                MessageError = "",
+                StatusCode = StatusCodes.Status200OK
+            };
+        }
+
+
+
     }
-
-
-
-
 }
+
+
+
+
