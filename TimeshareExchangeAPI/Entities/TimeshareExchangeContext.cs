@@ -294,6 +294,39 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasColumnName("type");
         });
 
+        modelBuilder.Entity<Payment>(entity =>
+        {
+       
+
+            entity.ToTable("Payments");
+
+            entity.Property(e => e.PayId)
+                .HasMaxLength(50)
+                .HasColumnName("PaymentId");
+            entity.Property(e => e.BookingId)
+                .HasMaxLength(50)
+                .HasColumnName("BookingId");
+            entity.Property(e => e.Date)
+                .HasColumnType("datetime")
+                .HasColumnName("PaymentDate");
+            entity.Property(e => e.MemberId)
+                .HasMaxLength(50)
+                .HasColumnName("MemberId");
+            entity.Property(e => e.Money)
+                .HasColumnType("decimal(20,2)")
+                .HasColumnName("money");
+            entity.Property(e => e.Status)
+                .HasMaxLength(50)
+                .HasColumnName("Status");
+            entity.HasOne(d => d.Booking).WithMany(p => p.Payments)
+                .HasForeignKey(d => d.BookingId)
+                .HasConstraintName("FK_Payment_Booking");
+
+            entity.HasOne(d => d.Member).WithMany(p => p.Payments)
+                .HasForeignKey(d => d.MemberId)
+                .HasConstraintName("FK_payment_Account");
+        });
+
         OnModelCreatingPartial(modelBuilder);
     }
 

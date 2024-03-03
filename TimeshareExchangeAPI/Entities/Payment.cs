@@ -15,6 +15,8 @@ public partial class Payment
 
     public string? BookingId { get; set; }
 
+    public string? Status { get; set; } 
+
     public virtual Booking? Booking { get; set; }
 
     public virtual Account? Member { get; set; }
