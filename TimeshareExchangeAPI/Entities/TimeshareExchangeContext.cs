@@ -185,34 +185,7 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasConstraintName("FK_Feedback_Account");
         });
 
-        modelBuilder.Entity<Payment>(entity =>
-        {
-            entity.HasKey(e => e.PayId).HasName("PK_payment");
 
-            entity.ToTable("Payment");
-
-            entity.Property(e => e.PayId)
-                .HasMaxLength(50)
-                .HasColumnName("payID");
-            entity.Property(e => e.BookingId)
-                .HasMaxLength(50)
-                .HasColumnName("bookingID");
-            entity.Property(e => e.Date)
-                .HasColumnType("datetime")
-                .HasColumnName("date");
-            entity.Property(e => e.MemberId)
-                .HasMaxLength(50)
-                .HasColumnName("memberID");
-            entity.Property(e => e.Money).HasColumnName("money");
-
-            entity.HasOne(d => d.Booking).WithMany(p => p.Payments)
-                .HasForeignKey(d => d.BookingId)
-                .HasConstraintName("FK_Payment_Booking");
-
-            entity.HasOne(d => d.Member).WithMany(p => p.Payments)
-                .HasForeignKey(d => d.MemberId)
-                .HasConstraintName("FK_payment_Account");
-        });
 
         modelBuilder.Entity<Realestate>(entity =>
         {
