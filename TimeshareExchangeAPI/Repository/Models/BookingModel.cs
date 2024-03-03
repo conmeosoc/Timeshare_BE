@@ -17,7 +17,6 @@ namespace TimeshareExchangeAPI.Repository.Models
 
         public string? MemberId { get; set; }
 
-        public decimal? Deposit { get; set; }
 
         public int? Amount { get; set; }
 
@@ -45,7 +44,6 @@ namespace TimeshareExchangeAPI.Repository.Models
 
         public string? MemberId { get; set; }
 
-        public decimal? Deposit { get; set; }
 
         public int? Amount { get; set; }
 

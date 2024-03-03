@@ -15,7 +15,6 @@ public partial class Booking
 
     public string? MemberId { get; set; }
 
-    public decimal? Deposit { get; set; }
 
     public int? Amount { get; set; }
 

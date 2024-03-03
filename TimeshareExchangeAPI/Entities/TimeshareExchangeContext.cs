@@ -81,9 +81,7 @@ public partial class TimeshareExchangeContext : DbContext
             entity.Property(e => e.CreatedDay)
                 .HasColumnType("datetime")
                 .HasColumnName("create_day");
-            entity.Property(e => e.Deposit)
-                .HasColumnType("money")
-                .HasColumnName("deposit");
+           
             entity.Property(e => e.EndDay)
                 .HasColumnType("datetime")
                 .HasColumnName("end_day");
