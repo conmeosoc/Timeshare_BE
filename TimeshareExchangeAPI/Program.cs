@@ -93,6 +93,7 @@ builder.Services.AddScoped<IGenericRepository<Realestate>, GenericRepository<Rea
 builder.Services.AddScoped<IGenericRepository<Feedback>, GenericRepository<Feedback>>();
 builder.Services.AddScoped<IGenericRepository<Booking>, GenericRepository<Booking>>();
 builder.Services.AddScoped<IGenericRepository<Voucher>, GenericRepository<Voucher>>();
+builder.Services.AddScoped<IGenericRepository<Exchange>, GenericRepository<Exchange>>();
 
 //Service
 builder.Services.AddScoped<IAccountService, AccountService>();
@@ -101,6 +102,7 @@ builder.Services.AddScoped<IRealestateService, RealestateService>();
 builder.Services.AddScoped<IFeedbackService, FeedbackService>();
 builder.Services.AddScoped<IBookingService, BookingService>();
 builder.Services.AddScoped<IVoucherService, VoucherService>();
+builder.Services.AddScoped<IExchangeService, ExchangeService>();
 
 
 
