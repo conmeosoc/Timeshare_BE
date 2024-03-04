@@ -27,6 +27,7 @@ namespace TimeshareExchangeAPI.Repository
            CreateMap<Exchange, ExchangeModel>().ReverseMap();
            CreateMap<Exchange, Exchangesta>().ReverseMap();
            CreateMap<Payment, PaymentModel>().ReverseMap();
+           CreateMap<Payment, PaymentRequestModel>().ReverseMap();
 
         }
 

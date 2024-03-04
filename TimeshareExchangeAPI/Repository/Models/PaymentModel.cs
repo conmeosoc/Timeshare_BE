@@ -19,6 +19,7 @@ namespace TimeshareExchangeAPI.Repository.Models
         public virtual Booking? Booking { get; set; }
 
         public virtual Account? Member { get; set; }
+
     }
 
     public class PaymentRequestModel
