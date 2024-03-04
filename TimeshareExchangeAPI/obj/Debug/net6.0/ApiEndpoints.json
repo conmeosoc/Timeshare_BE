@@ -1,0 +1,705 @@
+[
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.AccountsController",
+    "Method": "Delete",
+    "RelativePath": "api/Accounts/DeleteAccount",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.AccountsController",
+    "Method": "GetAllAccounts",
+    "RelativePath": "api/Accounts/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.AccountsController",
+    "Method": "GetAccountbyID",
+    "RelativePath": "api/Accounts/GetbyID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.AccountsController",
+    "Method": "Signin",
+    "RelativePath": "api/Accounts/Signin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.AccountsController",
+    "Method": "CreateUser",
+    "RelativePath": "api/Accounts/SignUpUser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "signUpModel",
+        "Type": "TimeshareExchangeAPI.Repository.Models.AccountRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.AccountsController",
+    "Method": "PutAccount",
+    "RelativePath": "api/Accounts/UpdateAccount",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "account",
+        "Type": "TimeshareExchangeAPI.Repository.Models.AccountRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.AccountsController",
+    "Method": "PutAccountSta",
+    "RelativePath": "api/Accounts/UpdateAccountStatus",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "account",
+        "Type": "TimeshareExchangeAPI.Repository.Models.Accountsta",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.BookingsController",
+    "Method": "AddBooking",
+    "RelativePath": "api/Bookings/Createbooking",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "booking",
+        "Type": "TimeshareExchangeAPI.Repository.Models.BookingRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.BookingsController",
+    "Method": "GetAllAccounts",
+    "RelativePath": "api/Bookings/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.BookingsController",
+    "Method": "GetAccountbyID",
+    "RelativePath": "api/Bookings/GetbyID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.BookingsController",
+    "Method": "GetbookingbyMemberID",
+    "RelativePath": "api/Bookings/GetbyMemberID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.BookingsController",
+    "Method": "UpdateStatus",
+    "RelativePath": "api/Bookings/UpdateStatus",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "status",
+        "Type": "TimeshareExchangeAPI.Repository.Models.BookingStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.ExchangeController",
+    "Method": "create",
+    "RelativePath": "api/Exchange/CreateExchange",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "signUpModel",
+        "Type": "TimeshareExchangeAPI.Repository.Models.ExchangeRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.ExchangeController",
+    "Method": "GetAllAccounts",
+    "RelativePath": "api/Exchange/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.ExchangeController",
+    "Method": "Getbyid",
+    "RelativePath": "api/Exchange/GetExchangebyID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.ExchangeController",
+    "Method": "Getbymemid",
+    "RelativePath": "api/Exchange/GetExchangebymemberID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "memberid",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.ExchangeController",
+    "Method": "Updatesta",
+    "RelativePath": "api/Exchange/Updatestatus",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "voucher",
+        "Type": "TimeshareExchangeAPI.Repository.Models.Exchangesta",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.FeedbacksController",
+    "Method": "AddFeedback",
+    "RelativePath": "api/Feedbacks/Createfeedback",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "feedback",
+        "Type": "TimeshareExchangeAPI.Repository.Models.FeedbackModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.FeedbacksController",
+    "Method": "GetAllAccounts",
+    "RelativePath": "api/Feedbacks/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.FeedbacksController",
+    "Method": "GetAccountbyID",
+    "RelativePath": "api/Feedbacks/GetbyID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.FeedbacksController",
+    "Method": "GetbymemberID",
+    "RelativePath": "api/Feedbacks/GetbyMemberID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.FeedbacksController",
+    "Method": "GetbyrealestateID",
+    "RelativePath": "api/Feedbacks/GetbyRealestateID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.RealestatesController",
+    "Method": "PostTimeshare",
+    "RelativePath": "API/Realestates/CreateRealestate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "memberID",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Location",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "create_day",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "Facility",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Price",
+        "Type": "System.Nullable\u00601[[System.Double, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "imageFiles",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile[]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.RealestatesController",
+    "Method": "GetAllTimeshare",
+    "RelativePath": "api/Realestates/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.RealestatesController",
+    "Method": "GetRealestatebymemberID",
+    "RelativePath": "api/Realestates/GetbyMemberID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.RealestatesController",
+    "Method": "GetRealestatebyID",
+    "RelativePath": "api/Realestates/GetbyRealestateID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.RealestatesController",
+    "Method": "UpdateStatus",
+    "RelativePath": "API/Realestates/UpdateRealestateSta",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "status",
+        "Type": "TimeshareExchangeAPI.Repository.Models.RealestateSta",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.TimesharesController",
+    "Method": "PostTimeshare",
+    "RelativePath": "api/Timeshares/CreateTimeshare",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "timeshare",
+        "Type": "TimeshareExchangeAPI.Repository.Models.TimeshareRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.TimesharesController",
+    "Method": "ExchangeTimeshare",
+    "RelativePath": "api/Timeshares/ExchangeTimeshare",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id1",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "id2",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.TimesharesController",
+    "Method": "GetAllTimeshare",
+    "RelativePath": "api/Timeshares/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.TimesharesController",
+    "Method": "GetTimesharebyID",
+    "RelativePath": "api/Timeshares/GetbyID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.TimesharesController",
+    "Method": "GetTimesharebyMemberID",
+    "RelativePath": "api/Timeshares/GetbyMemberID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.TimesharesController",
+    "Method": "GetTimesharebyRealestateID",
+    "RelativePath": "api/Timeshares/GetbyRealestateID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.TimesharesController",
+    "Method": "PutTimeshare",
+    "RelativePath": "api/Timeshares/UpdateTimeshare",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "timeshare",
+        "Type": "TimeshareExchangeAPI.Repository.Models.TimeshareRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.TimesharesController",
+    "Method": "Updatesta",
+    "RelativePath": "api/Timeshares/UpdateTimeshareSta",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "status",
+        "Type": "TimeshareExchangeAPI.Repository.Models.Timesharesta",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.VouchersController",
+    "Method": "AddBooking",
+    "RelativePath": "api/Vouchers/Createvoucher",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "booking",
+        "Type": "TimeshareExchangeAPI.Entities.Voucher",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.VouchersController",
+    "Method": "GetAllAccounts",
+    "RelativePath": "api/Vouchers/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.VouchersController",
+    "Method": "GetAccountbyID",
+    "RelativePath": "api/Vouchers/GetbyID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.VouchersController",
+    "Method": "GetAccountbyname",
+    "RelativePath": "api/Vouchers/GetbyName",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.VouchersController",
+    "Method": "Updatesta",
+    "RelativePath": "api/Vouchers/Updatevoucherstatus",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "status",
+        "Type": "TimeshareExchangeAPI.Repository.Models.Vouchersta",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TimeshareExchangeAPI.Controllers.WeatherForecastController",
+    "Method": "Get",
+    "RelativePath": "WeatherForecast",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[TimeshareExchangeAPI.WeatherForecast, TimeshareExchangeAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

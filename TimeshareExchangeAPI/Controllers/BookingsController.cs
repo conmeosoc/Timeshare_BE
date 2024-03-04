@@ -53,6 +53,12 @@ namespace TimeshareExchangeAPI.Controllers
             return Ok(responseModel);
         }
 
-
+        [HttpPut]
+        [Route("api/[controller]/UpdateStatus")]
+        public IActionResult UpdateStatus(string id, BookingStatus status)
+        {
+            var responseModel = _bookService.UpdateStatus(id,status);
+            return Ok(responseModel);
+        }
     }
 }

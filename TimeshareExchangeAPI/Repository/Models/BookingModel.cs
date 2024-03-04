@@ -55,4 +55,8 @@ namespace TimeshareExchangeAPI.Repository.Models
         public string? Status { get; set; }
 
     }
+    public class BookingStatus
+    {
+        public string? Status { get; set; }
+    }
 }

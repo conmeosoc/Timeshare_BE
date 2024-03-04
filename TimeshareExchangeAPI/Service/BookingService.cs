@@ -68,6 +68,26 @@ namespace TimeshareExchangeAPI.Service
                 StatusCode = StatusCodes.Status200OK
             };
         }
-
+        //UpdateSTatus
+        public ResponseModel UpdateStatus(String id, BookingStatus status)
+        {
+            var Voucher = _feedbackrepository.GetSingle(x => id.Equals(x.Id));
+            if (Voucher == null)
+            {
+                return new ResponseModel<Booking>
+                {
+                    MessageError = "Khong tim thay",
+                    StatusCode = StatusCodes.Status404NotFound
+                };
+            }
+            _mapper.Map(status, Voucher);
+            Voucher.Id = id;
+            _feedbackrepository.Update(Voucher);
+            return new ResponseModel<Booking>
+            {
+                Data = Voucher,
+                StatusCode = StatusCodes.Status200OK
+            };
+        }
     }
 }
