@@ -7,6 +7,8 @@ public partial class Payment
 {
     public string PayId { get; set; } = null!;
 
+    public DateTime? CreatedDay { get; set; }
+
     public string? MemberId { get; set; }
 
     public DateTime? Date { get; set; }

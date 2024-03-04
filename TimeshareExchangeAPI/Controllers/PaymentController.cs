@@ -51,6 +51,12 @@ namespace TimeshareExchangeAPI.Controllers
             return Ok(responseModel);
         }*/
 
-
+        [HttpPost]
+        [Route("api/[controller]/CreatePayment")]
+        public IActionResult AddBooking(PaymentRequestModel booking)
+        {
+            var responseModel = _paymentService.CreatePayment(booking);
+            return Ok(responseModel);
+        }
     }
 }

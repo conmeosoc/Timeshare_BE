@@ -80,10 +80,12 @@ namespace TimeshareExchangeAPI.Service
                    StatusCode = StatusCodes.Status200OK
                };
            }*/
-        public ResponseModel<Payment> CreatePayment(PaymentModel paymentModel)
-        {
-            var userEntity = _mapper.Map<Payment>(paymentModel);
 
+
+        public ResponseModel<Payment> CreatePayment(PaymentRequestModel signUpModel)
+        {
+            var userEntity = _mapper.Map<Payment>(signUpModel);
+            userEntity.CreatedDay = DateTime.Now;
             userEntity.PayId = Guid.NewGuid().ToString();
             _paymentRepository.Create(userEntity);
 
@@ -94,8 +96,6 @@ namespace TimeshareExchangeAPI.Service
                 StatusCode = StatusCodes.Status200OK
             };
         }
-
-
 
     }
 }
