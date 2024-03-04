@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using TimeshareExchangeAPI.Repository.Models;
+using TimeshareExchangeAPI.Service;
 using TimeshareExchangeAPI.Service.IService;
 
 namespace TimeshareExchangeAPI.Controllers
@@ -56,6 +57,14 @@ namespace TimeshareExchangeAPI.Controllers
         public IActionResult AddPayment(PaymentRequestModel payment)
         {
             var responseModel = _paymentService.CreatePayment(payment);
+            return Ok(responseModel);
+        }
+
+        [HttpPut]
+        [Route("API/[controller]/UpdatePaymentSta")]
+        public async Task<IActionResult> UpdateStatus(string id, PaymentSta status)
+        {
+            var responseModel = _paymentService.UpdateSta(id, status);
             return Ok(responseModel);
         }
     }

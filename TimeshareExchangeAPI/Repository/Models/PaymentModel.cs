@@ -36,4 +36,9 @@ namespace TimeshareExchangeAPI.Repository.Models
 
         public string? Status { get; set; }
     }
+
+    public class PaymentSta
+    {
+        public string? Status { get; set; }
+    }
 }
