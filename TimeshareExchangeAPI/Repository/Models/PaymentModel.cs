@@ -34,6 +34,5 @@ namespace TimeshareExchangeAPI.Repository.Models
         public string? BookingId { get; set; }
 
         public string? Status { get; set; }
-
     }
 }
