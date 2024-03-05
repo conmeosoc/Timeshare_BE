@@ -24,11 +24,11 @@ namespace TimeshareExchangeAPI.Repository.Models
 
     public class PaymentRequestModel
     {
-        public string PayId { get; set; } = null!;
+
 
         public string? MemberId { get; set; }
 
-        public DateTime? Date { get; set; }
+
 
         public int? Money { get; set; }
 

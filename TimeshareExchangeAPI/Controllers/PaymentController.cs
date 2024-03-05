@@ -67,5 +67,15 @@ namespace TimeshareExchangeAPI.Controllers
             var responseModel = _paymentService.UpdateSta(id, status);
             return Ok(responseModel);
         }
+
+        [HttpGet]
+        [Route("api/[controller]/GetPaymentByID")]
+        public IActionResult GetID(string id)
+        {
+            var responseModel = _paymentService.GetSingle(id);
+            return Ok(responseModel);
+        }
+
+
     }
 }

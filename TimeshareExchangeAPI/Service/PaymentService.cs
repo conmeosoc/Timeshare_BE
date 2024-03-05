@@ -53,12 +53,12 @@ namespace TimeshareExchangeAPI.Service
 
         public ResponseModel<List<PaymentModel>> GetByMemberID(string id)
         {
-            var feedbackEntity = _paymentRepository.Get(x => x.MemberId.Equals(id));
+            var paymentEntity = _paymentRepository.Get(x => x.MemberId.Equals(id));
 
-            var responsefeedbackModel = _mapper.Map<List<PaymentModel>>(feedbackEntity);
+            var responsepaymentModel = _mapper.Map<List<PaymentModel>>(paymentEntity);
             return new ResponseModel<List<PaymentModel>>
             {
-                Data = responsefeedbackModel,
+                Data = responsepaymentModel,
                 MessageError = "",
                 StatusCode = StatusCodes.Status200OK
             };
@@ -68,7 +68,7 @@ namespace TimeshareExchangeAPI.Service
         /*   public ResponseModel<Payment> Createpayment(PaymentModel paymentModel
                )
            {
-               var userEntity = _mapper.Map<Payment>(paymentModel);
+               var userEntity = _mapper.Map<Payment>(paymentModel); 
 
                userEntity.PayId = Guid.NewGuid().ToString();
                _paymentRepository.Create(userEntity);
@@ -108,7 +108,7 @@ namespace TimeshareExchangeAPI.Service
                     StatusCode = StatusCodes.Status404NotFound
                 };
             }
-            _mapper.Map(status, Voucher);
+            _mapper.Map(status, Voucher); 
             Voucher.PayId = id;
             _paymentRepository.Update(Voucher);
             return new ResponseModel<Payment>
