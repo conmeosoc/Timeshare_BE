@@ -16,9 +16,7 @@ namespace TimeshareExchangeAPI.Repository.Models
 
         public string? Status { get; set; }
 
-        public virtual Booking? Booking { get; set; }
 
-        public virtual Account? Member { get; set; }
 
     }
 
