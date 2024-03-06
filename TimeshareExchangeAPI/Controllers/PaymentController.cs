@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using TimeshareExchangeAPI.Repository.Models;
 using TimeshareExchangeAPI.Service;
 using TimeshareExchangeAPI.Service.IService;
@@ -36,21 +35,6 @@ namespace TimeshareExchangeAPI.Controllers
             return Ok(responseModel);
         }
 
-        /*[HttpPost]
-        [Route("api/[controller]/PutPayment")]
-        public IActionResult CreatePayment([FromBody] PaymentModel paymentModel)
-        {
-            if (paymentModel == null)
-            {
-                return BadRequest("Invalid payment data");
-            }
-
-            // Gọi phương thức CreatePayment với đối tượng paymentModel
-            var responseModel = _paymentService.CreatePayment(paymentModel);
-
-            // Trả về kết quả cho client
-            return Ok(responseModel);
-        }*/
 
         [HttpPost]
         [Route("api/[controller]/CreatePayment")]
