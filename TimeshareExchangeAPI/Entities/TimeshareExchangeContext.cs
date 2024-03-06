@@ -297,7 +297,7 @@ public partial class TimeshareExchangeContext : DbContext
         modelBuilder.Entity<Payment>(entity =>
         {
             entity.HasKey(p => p.PayId);
-            
+
             entity.ToTable("Payments");
 
             entity.Property(e => e.PayId)

@@ -14,7 +14,8 @@ public partial class Payment
     public int? Money { get; set; }
 
     public string? BookingId { get; set; }
-    
+
+
     public virtual Booking? Booking { get; set; }
 
     public virtual Account? Member { get; set; }

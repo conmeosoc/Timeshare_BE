@@ -94,6 +94,7 @@ builder.Services.AddScoped<IGenericRepository<Feedback>, GenericRepository<Feedb
 builder.Services.AddScoped<IGenericRepository<Booking>, GenericRepository<Booking>>();
 builder.Services.AddScoped<IGenericRepository<Voucher>, GenericRepository<Voucher>>();
 builder.Services.AddScoped<IGenericRepository<Exchange>, GenericRepository<Exchange>>();
+builder.Services.AddScoped<IGenericRepository<Payment>, GenericRepository<Payment>>();
 
 //Service
 builder.Services.AddScoped<IAccountService, AccountService>();
@@ -103,6 +104,7 @@ builder.Services.AddScoped<IFeedbackService, FeedbackService>();
 builder.Services.AddScoped<IBookingService, BookingService>();
 builder.Services.AddScoped<IVoucherService, VoucherService>();
 builder.Services.AddScoped<IExchangeService, ExchangeService>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
 
 
 
