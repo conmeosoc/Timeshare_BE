@@ -65,6 +65,7 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("phone"); ;
             entity.Property(e => e.Sex).HasColumnName("sex");
+            entity.Property(e => e.IsPremium).HasColumnName("isPremium");
             entity.Property(e => e.Status).HasColumnName("status");
         });
 

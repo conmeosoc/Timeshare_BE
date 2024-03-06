@@ -7,6 +7,8 @@
         public string? FullName { get; set; }
 
         public bool? Sex { get; set; }
+        public bool? IsPremium { get; set; }
+
 
         public string? Address { get; set; }
 

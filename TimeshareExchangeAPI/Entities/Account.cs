@@ -11,6 +11,7 @@ public partial class Account
     public string? Username { get; set; }
     public string? Password { get; set; }
     public bool? Sex { get; set; }
+    public bool? IsPremium { get; set; }
 
     public string? Address { get; set; }
 

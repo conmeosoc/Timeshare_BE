@@ -40,6 +40,7 @@ namespace TimeshareExchangeAPI.Service
                 };
             }
             userEntity.Id = Guid.NewGuid().ToString();
+            userEntity.IsPremium = false;
             _accountRepository.Create(userEntity);
 
             
