@@ -18,7 +18,9 @@ namespace TimeshareExchangeAPI.Repository.Models
         public DateTime? ExchangeDay { get; set; }
         public string? Status { get; set; }
 
-        
+        public virtual Account? Account { get; set; }
+
+        public virtual Timeshare? Timeshare { get; set; }
     }
     public class ExchangeRequestModel
     {

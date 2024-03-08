@@ -12,6 +12,7 @@ namespace TimeshareExchangeAPI.Service.IService
         public ResponseModel UpdateAccount(string id, AccountRequestModel accountModel);
         public ResponseModel DeleteAccount(string id);
         public ResponseModel UpdateAccountStatus(string id, Accountsta accountModel);
+        public ResponseModel UpdateAccountPremium(string id, Accountpre account);
 
     }
 }

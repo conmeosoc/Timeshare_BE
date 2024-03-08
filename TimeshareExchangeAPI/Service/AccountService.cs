@@ -194,6 +194,26 @@ namespace TimeshareExchangeAPI.Service
                 StatusCode = StatusCodes.Status200OK
             };
         }
+        public ResponseModel UpdateAccountPremium(string id, Accountpre account) 
+        {
+            var Account = _accountRepository.GetSingle(x => id.Equals(x.Id));
+            if (Account == null)
+            {
+                return new ResponseModel
+                {
+                    MessageError = "Khong tim thay",
+                    StatusCode = StatusCodes.Status404NotFound
+                };
+            }
+            _mapper.Map(account, Account);
+            Account.Id = id;
+            _accountRepository.Update(Account);
+            return new ResponseModel<Account>
+            { 
+                Data = Account,
+                StatusCode = StatusCodes.Status200OK
+            };
+        }
         //Delete
         public ResponseModel DeleteAccount(string id)
         {

@@ -92,6 +92,14 @@ namespace TimeshareExchangeAPI.Controllers
             var responseModel = _accountService.UpdateAccountStatus(id, account);
             return Ok(responseModel);
         }
+        [HttpPut]
+        [Route("api/[controller]/UpdateAccountPremium")]
+
+        public async Task<IActionResult> PutAccountPre(string id, Accountpre account)
+        {
+            var responseModel = _accountService.UpdateAccountPremium(id, account);
+            return Ok(responseModel);
+        }
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using TimeshareExchangeAPI.Entities;
 using TimeshareExchangeAPI.Repository.Generic;
 using TimeshareExchangeAPI.Repository.Models;
@@ -9,6 +10,8 @@ namespace TimeshareExchangeAPI.Service
     public class ExchangeService : IExchangeService
     {
         private readonly IGenericRepository<Exchange> _exchangerepository;
+        private readonly IGenericRepository<Account> _accountrepository;
+        private readonly IGenericRepository<Timeshare> _timesharerepository;
         private readonly IMapper _mapper;
 
         public ExchangeService(IGenericRepository<Exchange> repositoryBase, IMapper mapper)
@@ -36,6 +39,7 @@ namespace TimeshareExchangeAPI.Service
         public ResponseModel<List<ExchangeModel>> GetAll()
         {
             var entities = _exchangerepository.GetAll().ToList();
+            
             var response = _mapper.Map<List<ExchangeModel>>(entities.ToList());
             return new ResponseModel<List<ExchangeModel>>
             {

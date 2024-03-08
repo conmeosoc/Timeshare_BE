@@ -39,5 +39,10 @@
     {
         public bool? status { get; set; }
     }
-    
+    public class Accountpre
+    {
+        public bool? IsPremium { get; set; }
+    }
+
+
 }
