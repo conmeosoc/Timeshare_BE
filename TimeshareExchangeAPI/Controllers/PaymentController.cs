@@ -36,6 +36,17 @@ namespace TimeshareExchangeAPI.Controllers
         }
 
 
+        [HttpGet]
+        [Route("api/[controller]/GetbyBookingID")]
+
+        public IActionResult GetbyBookingID(string id)
+        {
+            var responseModel = _paymentService.GetByBookingID(id);
+            return Ok(responseModel);
+        }
+
+ 
+
         [HttpPost]
         [Route("api/[controller]/CreatePayment")]
         public IActionResult AddPayment(PaymentRequestModel payment)

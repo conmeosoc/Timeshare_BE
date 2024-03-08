@@ -65,6 +65,20 @@ namespace TimeshareExchangeAPI.Service
         }
 
 
+        public ResponseModel<List<PaymentModel>> GetByBookingID(string id)
+        {
+            var paymentEntity = _paymentRepository.Get(x => x.BookingId.Equals(id));
+
+            var responsepaymentModel = _mapper.Map<List<PaymentModel>>(paymentEntity);
+            return new ResponseModel<List<PaymentModel>>
+            {
+                Data = responsepaymentModel,
+                MessageError = "",
+                StatusCode = StatusCodes.Status200OK
+            };
+        }
+
+
         /*   public ResponseModel<Payment> Createpayment(PaymentModel paymentModel
                )
            {
