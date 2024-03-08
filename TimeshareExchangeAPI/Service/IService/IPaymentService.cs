@@ -13,6 +13,7 @@ namespace TimeshareExchangeAPI.Service.IService
         public ResponseModel<List<PaymentModel>> GetByMemberID(string id);
 
         public ResponseModel UpdateSta(String id, PaymentSta status);
+        public ResponseModel<List<PaymentModel>> GetByBookingID(string id);
 
         public ResponseModel<Payment> CreatePayment(PaymentRequestModel payment);
     }

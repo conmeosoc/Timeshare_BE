@@ -35,7 +35,6 @@ namespace TimeshareExchangeAPI.Controllers
             return Ok(responseModel);
         }
 
-
         [HttpGet]
         [Route("api/[controller]/GetbyBookingID")]
 
@@ -45,7 +44,6 @@ namespace TimeshareExchangeAPI.Controllers
             return Ok(responseModel);
         }
 
- 
 
         [HttpPost]
         [Route("api/[controller]/CreatePayment")]
