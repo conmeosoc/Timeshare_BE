@@ -147,8 +147,19 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("timeshareID2");
 
-           
-          
+            entity.HasOne(d => d.Account).WithMany()
+                .HasForeignKey(d => d.MemberId1)
+                .HasConstraintName("FK_Exchange_Account");
+            entity.HasOne(d => d.Account).WithMany()
+                .HasForeignKey(d => d.MemberId2)
+                .HasConstraintName("FK_Exchange_Account");
+
+            entity.HasOne(d => d.Timeshare).WithMany()
+                .HasForeignKey(d => d.TimeshareId1)
+                .HasConstraintName("FK_Exchange_Timeshare");
+            entity.HasOne(d => d.Timeshare).WithMany()
+                .HasForeignKey(d => d.TimeshareId2)
+                .HasConstraintName("FK_Exchange_Timeshare");
         });
 
         modelBuilder.Entity<Feedback>(entity =>
