@@ -24,6 +24,7 @@ public partial class Account
     public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
 
     public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
+    public virtual ICollection<Payoutrequest> Payoutre { get; set; } = new List<Payoutrequest>();
 
     public virtual ICollection<Timeshare> Timeshares { get; set; } = new List<Timeshare>();
 }

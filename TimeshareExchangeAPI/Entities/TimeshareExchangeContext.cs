@@ -307,6 +307,12 @@ public partial class TimeshareExchangeContext : DbContext
             entity.Property(e => e.BookingId)
                 .HasMaxLength(50)
                 .HasColumnName("BookingId");
+            entity.Property(e => e.PayoutID)
+                .HasMaxLength(50)
+                .HasColumnName("payoutRequestID");
+            entity.Property(e => e.PayoutID)
+                .HasMaxLength(50)
+                .HasColumnName("payoutRequestID");
             entity.Property(e => e.Date)
                 .HasColumnType("datetime")
                 .HasColumnName("PaymentDate");
@@ -326,6 +332,38 @@ public partial class TimeshareExchangeContext : DbContext
             entity.HasOne(d => d.Member).WithMany(p => p.Payments)
                 .HasForeignKey(d => d.MemberId)
                 .HasConstraintName("FK_payment_Account");
+            entity.HasOne(d => d.Payoutrequest).WithMany(p => p.Payments)
+                .HasForeignKey(d => d.PayoutID)
+                .HasConstraintName("FK_Payments_payoutRequest1");
+        });
+        modelBuilder.Entity<Payoutrequest>(entity =>
+        {
+            entity.HasKey(p => p.Id);
+
+            entity.ToTable("PayoutRequest");
+
+            entity.Property(e => e.Id)
+                .HasMaxLength(50)
+                .HasColumnName("id");
+            entity.Property(e => e.MemberId)
+                .HasMaxLength(50)
+                .HasColumnName("memberid");
+            entity.Property(e => e.Amount)
+                .HasColumnType("decimal(18,0)")
+                .HasColumnName("amount");
+            entity.Property(e => e.CreateAt)
+                .HasColumnType("datetime")
+                .HasColumnName("createAt");
+            
+            entity.Property(e => e.Status)
+                .HasMaxLength(50)
+                .HasColumnName("Status"); 
+            entity.Property(e => e.PaypalId)
+                .HasMaxLength(50)
+                .HasColumnName("paypalID");
+            entity.HasOne(d => d.Member).WithMany(p => p.Payoutre)
+                .HasForeignKey(d => d.MemberId)
+                .HasConstraintName("FK_payoutRequest_Account");
         });
 
         OnModelCreatingPartial(modelBuilder);
