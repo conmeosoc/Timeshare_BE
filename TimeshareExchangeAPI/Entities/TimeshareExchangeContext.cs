@@ -360,7 +360,7 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasColumnName("Status"); 
             entity.Property(e => e.PaypalId)
                 .HasMaxLength(50)
-                .HasColumnName("paypalID");
+                .HasColumnName("paypalD");
             entity.HasOne(d => d.Member).WithMany(p => p.Payoutre)
                 .HasForeignKey(d => d.MemberId)
                 .HasConstraintName("FK_payoutRequest_Account");

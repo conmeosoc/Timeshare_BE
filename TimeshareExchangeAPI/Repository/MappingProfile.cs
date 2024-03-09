@@ -32,6 +32,9 @@ namespace TimeshareExchangeAPI.Repository
             CreateMap<Payment, PaymentSta>().ReverseMap();
             CreateMap<Exchange, ExchangeRequestModel>().ReverseMap();
             CreateMap<Booking, BookingStatus>().ReverseMap();
+            CreateMap<Payoutrequest, PayoutModel>().ReverseMap();
+            CreateMap<Payoutrequest, PayoutrequestModel>().ReverseMap();
+            CreateMap<Payoutrequest, Payoutsta>().ReverseMap();
 
         }
 

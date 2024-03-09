@@ -5,6 +5,7 @@ namespace TimeshareExchangeAPI.Repository.Models
     public class PaymentModel
     {
         public string PayId { get; set; } = null!;
+        public string? PayoutID { get; set; }
 
         public string? MemberId { get; set; }
 
