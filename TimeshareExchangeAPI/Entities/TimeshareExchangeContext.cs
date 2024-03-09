@@ -312,7 +312,10 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasColumnName("payoutRequestID");
             entity.Property(e => e.PayoutID)
                 .HasMaxLength(50)
-                .HasColumnName("payoutRequestID");
+                .HasColumnName("payoutRequestID"); 
+            entity.Property(e => e.Type)
+                .HasMaxLength(50)
+                .HasColumnName("type");
             entity.Property(e => e.Date)
                 .HasColumnType("datetime")
                 .HasColumnName("PaymentDate");

@@ -6,6 +6,7 @@ namespace TimeshareExchangeAPI.Repository.Models
     {
         public string PayId { get; set; } = null!;
         public string? PayoutID { get; set; }
+        public string? Type { get; set; }
 
         public string? MemberId { get; set; }
 
@@ -28,6 +29,7 @@ namespace TimeshareExchangeAPI.Repository.Models
         public string? MemberId { get; set; }
 
 
+        public string? Type { get; set; }
 
         public int? Money { get; set; }
 

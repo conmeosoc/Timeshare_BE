@@ -9,6 +9,7 @@ public partial class Payment
 
     public string? MemberId { get; set; }
     public string? PayoutID { get; set; }
+    public string? Type { get; set; }
 
     public DateTime? Date { get; set; }
     public string? Status { get; set; }
