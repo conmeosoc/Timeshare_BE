@@ -322,6 +322,9 @@ public partial class TimeshareExchangeContext : DbContext
             entity.Property(e => e.MemberId)
                 .HasMaxLength(50)
                 .HasColumnName("MemberId");
+            entity.Property(e => e.Title)
+                .HasMaxLength(50)
+                .HasColumnName("title");
             entity.Property(e => e.Money)
                 .HasColumnType("decimal(20,2)")
                 .HasColumnName("Amount");
