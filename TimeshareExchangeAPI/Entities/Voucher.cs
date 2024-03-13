@@ -13,9 +13,9 @@ public partial class Voucher
 
     public string? Type { get; set; }
 
-    public DateTime? EndDay { get; set; }
+    public DateTimeOffset? EndDay { get; set; }
 
-    public DateTime? StartDay { get; set; }
+    public DateTimeOffset? StartDay { get; set; }
 
     public Boolean? Status { get; set; }
 }

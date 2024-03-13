@@ -20,7 +20,8 @@ namespace TimeshareExchangeAPI.Service
         public ResponseModel<Booking> CreateBooking(BookingRequestModel signUpModel)
         {
             var userEntity = _mapper.Map<Booking>(signUpModel);
-            userEntity.CreatedDay = DateTime.Now;
+            DateTimeOffset currentTime = DateTimeOffset.Now;
+            userEntity.CreatedDay = currentTime;
             userEntity.Id = Guid.NewGuid().ToString();
             _feedbackrepository.Create(userEntity);
 

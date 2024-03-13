@@ -6,12 +6,12 @@ namespace TimeshareExchangeAPI.Entities;
 public partial class Booking
 {
     public string Id { get; set; } = null!;
-    public DateTime? CreatedDay { get; set; }
+    public DateTimeOffset? CreatedDay { get; set; }
     public string? TimeshareId { get; set; }
 
-    public DateTime? StartDay { get; set; }
+    public DateTimeOffset? StartDay { get; set; }
 
-    public DateTime? EndDay { get; set; }
+    public DateTimeOffset? EndDay { get; set; }
 
     public string? MemberId { get; set; }
 

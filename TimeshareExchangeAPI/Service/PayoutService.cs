@@ -72,7 +72,9 @@ namespace TimeshareExchangeAPI.Service
         public ResponseModel<Payoutrequest> CreatePayment(PayoutrequestModel payment)
         {
             var userEntity = _mapper.Map<Payoutrequest>(payment);
-            userEntity.CreateAt = DateTime.Now;
+            DateTimeOffset currentTime = DateTimeOffset.Now;
+
+            userEntity.CreateAt = currentTime;
             userEntity.Id = Guid.NewGuid().ToString();
             _paymentRepository.Create(userEntity);
 

@@ -11,7 +11,7 @@ namespace TimeshareExchangeAPI.Repository.Models
         public string? MemberId { get; set; }
         public string? Title { get; set; }
 
-        public DateTime? Date { get; set; }
+        public DateTimeOffset? Date { get; set; }
 
         public int? Money { get; set; }
 
@@ -39,7 +39,6 @@ namespace TimeshareExchangeAPI.Repository.Models
 
         public string? Status { get; set; }
     }
-
     public class PaymentSta
     {
         public string? Status { get; set; }

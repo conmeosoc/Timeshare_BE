@@ -8,7 +8,7 @@ namespace TimeshareExchangeAPI.Repository.Models
         public string Id { get; set; } = null!;
         public string? memberID { get; set; }
         public string? Name { get; set; }
-        public DateTime create_day { get; set; }
+        public DateTimeOffset create_day { get; set; }
         public string? Location { get; set; }
 
         public string? Facility { get; set; }
@@ -28,7 +28,7 @@ namespace TimeshareExchangeAPI.Repository.Models
         public string? memberID { get; set; }
         public string? Location { get; set; }
         public string? Description { get; set; }
-        public DateTime create_day { get; set; }
+        public DateTimeOffset create_day { get; set; }
 
         public string? Facility { get; set; }
         public double? Price { get; set; }

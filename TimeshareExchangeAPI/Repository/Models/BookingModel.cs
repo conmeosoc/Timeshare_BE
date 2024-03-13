@@ -11,9 +11,9 @@ namespace TimeshareExchangeAPI.Repository.Models
         public string? FullName { get; set; }
         public string? PaymentID { get; set; }
 
-        public DateTime? StartDay { get; set; }
+        public DateTimeOffset? StartDay { get; set; }
 
-        public DateTime? EndDay { get; set; }
+        public DateTimeOffset? EndDay { get; set; }
 
         public string? MemberId { get; set; }
 
@@ -38,9 +38,9 @@ namespace TimeshareExchangeAPI.Repository.Models
 
         public string? TimeshareId { get; set; }
 
-        public DateTime? StartDay { get; set; }
+        public DateTimeOffset? StartDay { get; set; }
 
-        public DateTime? EndDay { get; set; }
+        public DateTimeOffset? EndDay { get; set; }
 
         public string? MemberId { get; set; }
 

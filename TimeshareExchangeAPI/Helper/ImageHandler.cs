@@ -41,11 +41,9 @@
                     string imagePath = ImageHandler.UploadImageToFile(webHostEnvironment, formFile, uniqueID);
                     filePathName.Add(imagePath);
                 }
-                // chỗ này foreach formFiles rồi gọi hàm UploadImageToFile
             }
             catch (Exception ex)
             {
-
                 //throw ex;
             }
             return string.Join(",", filePathName);

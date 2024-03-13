@@ -12,7 +12,7 @@ public partial class Realestate
     public string? Location { get; set; }
     public string? Description { get; set; }
     public string? MemberID { get; set; }
-    public DateTime? CreatedDate { get; set; }
+    public DateTimeOffset? CreatedDate { get; set; }
     public string? Facility { get; set; }
 
     public string? FeedbackId { get; set; }

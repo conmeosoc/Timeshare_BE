@@ -11,11 +11,11 @@ namespace TimeshareExchangeAPI.Repository.Models
         public string? TimeshareId1 { get; set; }
         public string? TimeshareId2 { get; set; }
 
-        public DateTime? StartDay { get; set; }
+        public DateTimeOffset? StartDay { get; set; }
 
-        public DateTime? EndDay { get; set; }
+        public DateTimeOffset? EndDay { get; set; }
 
-        public DateTime? ExchangeDay { get; set; }
+        public DateTimeOffset? ExchangeDay { get; set; }
         public string? Status { get; set; }
 
         public virtual Account? Account { get; set; }
@@ -30,9 +30,9 @@ namespace TimeshareExchangeAPI.Repository.Models
         public string? TimeshareId1 { get; set; }
         public string? TimeshareId2 { get; set; }
 
-        public DateTime? StartDay { get; set; }
+        public DateTimeOffset? StartDay { get; set; }
 
-        public DateTime? EndDay { get; set; }
+        public DateTimeOffset? EndDay { get; set; }
 
         public string? Status { get; set; }
 

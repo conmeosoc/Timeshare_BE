@@ -12,7 +12,7 @@ public partial class Payment
     public string? Type { get; set; }
     public string? Title { get; set; }
 
-    public DateTime? Date { get; set; }
+    public DateTimeOffset? Date { get; set; }
     public string? Status { get; set; }
     public int? Money { get; set; }
 

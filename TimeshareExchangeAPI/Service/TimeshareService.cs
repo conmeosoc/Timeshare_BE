@@ -103,7 +103,9 @@ namespace TimeshareExchangeAPI.Service
             var userEntity = _mapper.Map<Timeshare>(signUpModel);
 
             userEntity.Id = Guid.NewGuid().ToString();
-            userEntity.CreatedDay = DateTime.Now;
+            DateTimeOffset currentTime = DateTimeOffset.Now;
+
+            userEntity.CreatedDay = currentTime;
             _timeshareRepository.Create(userEntity);
 
             return new ResponseModel<Timeshare>

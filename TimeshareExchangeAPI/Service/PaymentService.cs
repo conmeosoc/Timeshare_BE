@@ -84,7 +84,9 @@ namespace TimeshareExchangeAPI.Service
         public ResponseModel<Payment> CreatePayment(PaymentRequestModel payment)
         {
             var userEntity = _mapper.Map<Payment>(payment);
-            userEntity.Date = DateTime.Now;
+            DateTimeOffset currentTime = DateTimeOffset.Now;
+
+            userEntity.Date = currentTime;
             userEntity.PayId = Guid.NewGuid().ToString();
             _paymentRepository.Create(userEntity);
 
@@ -116,7 +118,25 @@ namespace TimeshareExchangeAPI.Service
                 StatusCode = StatusCodes.Status200OK
             };
         }
-
+        //Delete
+        public ResponseModel DeleteAccount(string id)
+        {
+            var Account = _paymentRepository.GetSingle(x => id.Equals(x.PayId));
+            if (Account == null)
+            {
+                return new ResponseModel
+                {
+                    MessageError = "Khong tim thay",
+                    StatusCode = StatusCodes.Status404NotFound
+                };
+            }
+            _paymentRepository.Delete(Account);
+            return new ResponseModel<Payment>
+            {
+                MessageError = "Xoa thanh cong",
+                StatusCode = StatusCodes.Status200OK
+            };
+        }
     }
 }
 

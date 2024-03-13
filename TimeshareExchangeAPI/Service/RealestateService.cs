@@ -36,7 +36,9 @@ namespace TimeshareExchangeAPI.Service
             var imagePath = ImageHandler.UploadImagesToFile(webHostEnvironment, requestProductModel.imageFiles, entity.Id);
             entity.Photo = imagePath;
             entity.Status = "1";
-            entity.CreatedDate = DateTime.Now;
+            DateTimeOffset currentTime = DateTimeOffset.Now;
+
+            entity.CreatedDate = currentTime;
             _timeshareRepository.Create(entity);
             return new ResponseModel
             {
