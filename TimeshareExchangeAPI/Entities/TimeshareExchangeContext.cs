@@ -80,11 +80,11 @@ public partial class TimeshareExchangeContext : DbContext
             entity.Property(e => e.Amount).HasColumnName("amount");
             entity.Property(e => e.Children).HasColumnName("children");
             entity.Property(e => e.CreatedDay)
-                .HasColumnType("datetime")
+                .HasColumnType("datetimeoffset(7)")
                 .HasColumnName("create_day");
            
             entity.Property(e => e.EndDay)
-                .HasColumnType("datetime")
+                .HasColumnType("datetimeoffset(7)")
                 .HasColumnName("end_day");
             entity.Property(e => e.MemberId)
                 .HasMaxLength(50)
@@ -103,7 +103,7 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasColumnName("status");
             entity.Property(e => e.Room).HasColumnName("room");
             entity.Property(e => e.StartDay)
-                .HasColumnType("datetime")
+                .HasColumnType("datetimeoffset(7)")
                 .HasColumnName("start_day");
             entity.Property(e => e.TimeshareId)
                 .HasMaxLength(50)
@@ -126,10 +126,10 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("Id");
             entity.Property(e => e.EndDay)
-                .HasColumnType("datetime")
+                .HasColumnType("datetimeoffset(7)")
                 .HasColumnName("end_day");
             entity.Property(e => e.ExchangeDay)
-                .HasColumnType("datetime")
+                .HasColumnType("datetimeoffset(7)")
                 .HasColumnName("exchange_day");
             entity.Property(e => e.MemberId1)
                 .HasMaxLength(50)
@@ -138,7 +138,7 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("memberID2");
             entity.Property(e => e.StartDay)
-                .HasColumnType("datetime")
+                .HasColumnType("datetimeoffset(7)")
                 .HasColumnName("start_day");
             entity.Property(e => e.TimeshareId1)
                 .HasMaxLength(50)
@@ -224,7 +224,7 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasColumnType("decimal(18,0)")
                 .HasColumnName("price");
             entity.Property(e => e.CreatedDate)
-                .HasColumnType("datetime")
+                .HasColumnType("datetimeoffset(7)")
                 .HasColumnName("create_day");
             entity.HasOne(d => d.FeedbackNavigation).WithMany(p => p.Realestates)
                 .HasForeignKey(d => d.FeedbackId)
@@ -242,10 +242,10 @@ public partial class TimeshareExchangeContext : DbContext
                .HasColumnType("decimal(18,0)")
                .HasColumnName("price");
             entity.Property(e => e.EndDay)
-                .HasColumnType("datetime")
+                .HasColumnType("datetimeoffset(7)")
                 .HasColumnName("end_day"); 
             entity.Property(e => e.CreatedDay)
-                .HasColumnType("datetime")
+                .HasColumnType("datetimeoffset(7)")
                 .HasColumnName("create_day");
             entity.Property(e => e.MemberId)
                 .HasMaxLength(50)
@@ -254,7 +254,7 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("realestateID");
             entity.Property(e => e.StartDay)
-                .HasColumnType("datetime")
+                .HasColumnType("datetimeoffset(7)")
                 .HasColumnName("start_day");
             entity.Property(e => e.Status)
                 .HasMaxLength(50)
@@ -276,7 +276,7 @@ public partial class TimeshareExchangeContext : DbContext
 
             entity.Property(e => e.Amount).HasColumnName("amount");
             entity.Property(e => e.EndDay)
-                .HasColumnType("datetime")
+                .HasColumnType("datetimeoffset(7)")
                 .HasColumnName("end_day");
             entity.Property(e => e.Id)
                 .HasMaxLength(50)
@@ -285,7 +285,7 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("name");
             entity.Property(e => e.StartDay)
-                .HasColumnType("datetime")
+                .HasColumnType("datetimeoffset(7)")
                 .HasColumnName("start_day");
             entity.Property(e => e.Status)
                 .HasColumnType("boolean")
@@ -317,7 +317,7 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("type");
             entity.Property(e => e.Date)
-                .HasColumnType("datetime")
+                .HasColumnType("datetimeoffset(7)")
                 .HasColumnName("PaymentDate");
             entity.Property(e => e.MemberId)
                 .HasMaxLength(50)
@@ -358,7 +358,7 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasColumnType("decimal(18,0)")
                 .HasColumnName("amount");
             entity.Property(e => e.CreateAt)
-                .HasColumnType("datetime")
+                .HasColumnType("datetimeoffset(7)")
                 .HasColumnName("createAt");
             
             entity.Property(e => e.Status)

@@ -23,7 +23,7 @@ namespace TimeshareExchangeAPI.Repository.Models
         public int? Adult { get; set; }
 
         public int? Children { get; set; }
-        public DateTime? CreatedDay { get; set; }
+        public DateTimeOffset? CreatedDay { get; set; }
 
         public int? Room { get; set; }
         public string? Status { get; set; }
