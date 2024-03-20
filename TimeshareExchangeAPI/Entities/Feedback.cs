@@ -16,5 +16,5 @@ public partial class Feedback
 
     public virtual Account? Member { get; set; }
 
-    public virtual ICollection<Realestate> Realestates { get; set; } = new List<Realestate>();
+    public virtual Realestate? Realestates { get; set; }
 }

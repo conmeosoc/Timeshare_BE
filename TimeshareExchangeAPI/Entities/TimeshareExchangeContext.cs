@@ -184,6 +184,9 @@ public partial class TimeshareExchangeContext : DbContext
             entity.HasOne(d => d.Member).WithMany(p => p.Feedbacks)
                 .HasForeignKey(d => d.MemberId)
                 .HasConstraintName("FK_Feedback_Account");
+            entity.HasOne(d => d.Realestates).WithMany(p => p.Feedbacks)
+                .HasForeignKey(d => d.RealestateId)
+                .HasConstraintName("FK_Feedback_Realestate");
         });
 
 
@@ -198,9 +201,7 @@ public partial class TimeshareExchangeContext : DbContext
             entity.Property(e => e.Facility)
                 .HasMaxLength(50)
                 .HasColumnName("facility");
-            entity.Property(e => e.FeedbackId)
-                .HasMaxLength(50)
-                .HasColumnName("feedbackId");
+            
             entity.Property(e => e.Location)
                 .HasMaxLength(50)
                 .HasColumnName("location");
@@ -218,7 +219,6 @@ public partial class TimeshareExchangeContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("status"); 
             entity.Property(e => e.Description)
-                .HasMaxLength(500) 
                 .HasColumnName("description");
             entity.Property(e => e.Price)
                 .HasColumnType("decimal(18,0)")
@@ -226,9 +226,6 @@ public partial class TimeshareExchangeContext : DbContext
             entity.Property(e => e.CreatedDate)
                 .HasColumnType("datetimeoffset(7)")
                 .HasColumnName("create_day");
-            entity.HasOne(d => d.FeedbackNavigation).WithMany(p => p.Realestates)
-                .HasForeignKey(d => d.FeedbackId)
-                .HasConstraintName("FK_Realestate_Feedback");
         });
 
         modelBuilder.Entity<Timeshare>(entity =>

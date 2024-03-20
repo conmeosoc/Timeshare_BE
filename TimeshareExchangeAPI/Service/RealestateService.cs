@@ -11,12 +11,14 @@ namespace TimeshareExchangeAPI.Service
     {
         private readonly IGenericRepository<Realestate> _timeshareRepository;
         private readonly IGenericRepository<Timeshare> _timeshare2Repository;
+        private readonly IGenericRepository<Feedback> _feedbackRepository;
         private readonly IMapper _mapper;
 
-        public RealestateService(IGenericRepository<Realestate> repositoryBase, IGenericRepository<Timeshare> repositoryBase2, IMapper mapper)
+        public RealestateService(IGenericRepository<Realestate> repositoryBase,IGenericRepository<Feedback> repositoryBase3, IGenericRepository<Timeshare> repositoryBase2, IMapper mapper)
         {
-            _timeshareRepository = repositoryBase;
+            _timeshareRepository = repositoryBase; 
             _timeshare2Repository = repositoryBase2;
+            _feedbackRepository = repositoryBase3;
             _mapper = mapper;
 
         }
@@ -37,6 +39,7 @@ namespace TimeshareExchangeAPI.Service
             entity.Photo = imagePath;
             entity.Status = "1";
             DateTimeOffset currentTime = DateTimeOffset.Now;
+            
 
             entity.CreatedDate = currentTime;
             _timeshareRepository.Create(entity);
@@ -53,8 +56,12 @@ namespace TimeshareExchangeAPI.Service
             var entities = _timeshareRepository.GetAll().ToList();
             foreach (var entity in entities)
             {
+               
                 var timeshare = _timeshare2Repository.Get(x => x.RealestateId == entity.Id);
                 entity.Timeshares = timeshare.ToList();
+                var feedback = _feedbackRepository.Get(x => x.RealestateId == entity.Id);
+                entity.Feedbacks = feedback.ToList();
+                
             }
 
             var response = _mapper.Map<List<RealestateModel>>(entities.ToList());
@@ -87,6 +94,8 @@ namespace TimeshareExchangeAPI.Service
             {
                 var timeshare = _timeshare2Repository.Get(x => x.RealestateId == entity.Id);
                 entity.Timeshares = timeshare.ToList();
+                var feedback = _feedbackRepository.Get(x => x.RealestateId == entity.Id);
+                entity.Feedbacks = feedback.ToList();
             }
             var responseAccountModel = _mapper.Map<RealestateModel>(AccountEntity);
             return new ResponseModel<Realestate>

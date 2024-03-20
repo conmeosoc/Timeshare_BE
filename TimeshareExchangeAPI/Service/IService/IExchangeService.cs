@@ -16,9 +16,7 @@ namespace TimeshareExchangeAPI.Service.IService
 
 
 
-        public ResponseModel<ExchangeModel> Getbymemid(string id);
-
-
+        public ResponseModel<List<ExchangeModel>> Getbymemid(string id);
         public ResponseModel<Exchange> Updatesta(string id, Exchangesta voucher);
 
 

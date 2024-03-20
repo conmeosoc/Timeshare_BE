@@ -63,11 +63,11 @@ namespace TimeshareExchangeAPI.Service
             };
         }
         //GetexchangebymemberID
-        public ResponseModel<ExchangeModel> Getbymemid(string id)
+        public ResponseModel<List<ExchangeModel>> Getbymemid(string id)
         {
-            var feedbackEntity = _exchangerepository.GetSingle(x => x.MemberId1.Equals(id)||x.MemberId2.Equals(id));
-            var responsefeedbackModel = _mapper.Map<ExchangeModel>(feedbackEntity);
-            return new ResponseModel<ExchangeModel>
+            var feedbackEntity = _exchangerepository.Get(x => x.MemberId1.Equals(id)||x.MemberId2.Equals(id));
+            var responsefeedbackModel = _mapper.Map<List<ExchangeModel>>(feedbackEntity);
+            return new ResponseModel<List<ExchangeModel>>
             {
                 Data = responsefeedbackModel,
                 MessageError = "",

@@ -8,7 +8,7 @@ namespace TimeshareExchangeAPI.Repository.Models
         public string Id { get; set; } = null!;
         public string? memberID { get; set; }
         public string? Name { get; set; }
-        public DateTimeOffset create_day { get; set; }
+        public DateTimeOffset? create_day { get; set; }
         public string? Location { get; set; }
 
         public string? Facility { get; set; }
@@ -20,6 +20,7 @@ namespace TimeshareExchangeAPI.Repository.Models
         public double? Price { get; set; }
         public string? Status { get; set; }
         public virtual ICollection<Timeshare> Timeshares { get; set; } = new List<Timeshare>();
+        public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
 
     }
     public class RealestateRequestModel
@@ -28,7 +29,6 @@ namespace TimeshareExchangeAPI.Repository.Models
         public string? memberID { get; set; }
         public string? Location { get; set; }
         public string? Description { get; set; }
-        public DateTimeOffset create_day { get; set; }
 
         public string? Facility { get; set; }
         public double? Price { get; set; }

@@ -15,14 +15,12 @@ public partial class Realestate
     public DateTimeOffset? CreatedDate { get; set; }
     public string? Facility { get; set; }
 
-    public string? FeedbackId { get; set; }
-
     public string? Photo { get; set; }
 
     public string? Status { get; set; }
     public double? Price { get; set; }
 
-    public virtual Feedback? FeedbackNavigation { get; set; }
+    public virtual ICollection<Feedback>? Feedbacks { get; set; } = new List<Feedback>();
 
     public virtual ICollection<Timeshare> Timeshares { get; set; } = new List<Timeshare>();
 }
